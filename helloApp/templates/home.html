@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+</head>
+<body>
+    <h1>Items</h1>
+    <form method="GET" action=".">
+        <input type="text" name="q" value="{{ query|default:'' }}" placeholder="Search items...">
+        <button type="submit">Search</button>
+    </form>
+    
+    <ul>
+        {% for item in page_obj %}
+            <li>{{ item.name }} - {{ item.price }} yen</li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        <!-- 前ページへ： 前のページがあるのかチェックし、存在するのならば前ページの番号を取得-->
+        {% if page_obj.has_previous %}  <!-- True or False-->
+        <a href="?q={{ query }}&page={{ page_obj.previous_page_number }}">Previous</a>
+            <!-- previous_page_number：メソッド：前のページ番号取得 -->
+        {% endif %}
+
+        <!-- 現在のページ番号と全ページ数を表示： Page 1 of 2 Next-->
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        <!-- .number：現在のページ番号の取得 .paginator.num_pages：全ページ数を取得-->
+
+        <!-- 次ページへ  -->
+        {% if page_obj.has_next %}
+        <a href="?q={{ query }}&page={{ page_obj.next_page_number }}">Next</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>
