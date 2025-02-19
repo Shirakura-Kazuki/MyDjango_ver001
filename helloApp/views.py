@@ -38,3 +38,11 @@ def edit_item(request, item_id):
     else:
         form = ItemForm(instance=item)  # 既存データをフォームに表示
     return render(request, 'edit_item.html', {'form': form})
+
+# ニュースページ：ニュースの一覧を表示
+def news(request):
+    return render(request, 'helloApp/news.html')  # news.htmlを表示
+
+# ホームページ：ホームページを表示
+def home(request):
+    return render(request, 'helloApp/home.html')  # home.htmlを表示
