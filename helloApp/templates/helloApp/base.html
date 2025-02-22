@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}プロ野球ダメ助っ人博物館{% endblock %}</title>
     <link rel="icon" href="{% static 'images/logimg_main.png' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+    {% block extra_css %}{% endblock %}
 </head>
 <body>
     <!-- ヘッダー -->
@@ -17,10 +18,10 @@
         <nav>
             <ul>
                 <li><a href="{% url 'home' %}"> Home </a></li>
-                <li class="main_title"><a href="#"> 殿堂館 </a></li>
-                <li><a href="#"> 投票リクエスト </a></li>
+                <li class="main_title"><a href="{% url 'player' %}"> 殿堂選手紹介 </a></li>
+                <li><a href="{% url 'request' %}"> 投票リクエスト </a></li>
                 <li><a href="{% url 'news' %}"> お知らせ </a></li>
-                <li><a href="#"> お問い合わせ </a></li>
+                <li><a href="{% url 'direct' %}"> お問い合わせ </a></li>
             </ul>
         </nav>
     </header>
@@ -41,5 +42,6 @@
         </ul>
         <p>Copyright © ダメ助っ人博物館 ～愛すべき助っ人たち～</p>
     </footer>
+    {% block extra_js %}{% endblock %}
 </body>
 </html>

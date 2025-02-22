@@ -1,6 +1,10 @@
 {% extends 'helloApp/base.html' %}
 {% load static %}
 
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+{% endblock %}
+
 {% block title %}ホーム - プロ野球ダメ助っ人博物館{% endblock %}
 
 {% block content %}
@@ -35,6 +39,38 @@
         </section>
     
         <script src="{% static 'js/slideshow.js' %}" defer></script>
+
+        <section class="event-section">
+            <div class="event-container">
+                <div class="event-card">
+                    <img src="{% static 'images/event1.jpg' %}" alt="イベント1">
+                    <div class="event-content">
+                        <span class="event-label event">イベント</span>
+                        <h3>野球の学校 井野 修氏 トークイベント開催</h3>
+                        <p>2025年2月24日（月） 15:00～16:00</p>
+                    </div>
+                </div>
+        
+                <div class="event-card">
+                    <img src="{% static 'images/exhibit1.jpg' %}" alt="展示">
+                    <div class="event-content">
+                        <span class="event-label exhibit">展示</span>
+                        <h3>企画展「野球殿堂1959〜2025」</h3>
+                        <p>2025年3月1日（土）～7月6日（日）</p>
+                    </div>
+                </div>
+        
+                <div class="event-card">
+                    <img src="{% static 'images/hall1.jpg' %}" alt="殿堂">
+                    <div class="event-content">
+                        <span class="event-label hall">殿堂</span>
+                        <h3>2025年 野球殿堂入り発表</h3>
+                        <p>イチロー氏、岩瀬仁紀氏、掛布雅之氏らが殿堂入り！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
     
 {% endblock %}
 

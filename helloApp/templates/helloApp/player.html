@@ -1,0 +1,101 @@
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/p_style.css' %}">
+{% endblock %}
+
+
+{% block title %}殿堂選手紹介 - プロ野球ダメ助っ人博物館{% endblock %}
+
+{% block content %}
+    <!-- ヘッダー -->
+    <header class="header"></header>
+
+    <!-- フィルターボタン -->
+    <section class="filter-section">
+        <a href="?category=" class="filter-btn">全員表示</a>
+        <a href="?category=選手" class="filter-btn">選手</a>
+        <a href="?category=その他" class="filter-btn">その他</a>
+        <!-- 所属チームフィルター -->
+        <div class="dropdown">
+            <button class="filter-btn dropdown-btn">所属チーム</button>
+            <div class="dropdown-content">
+                <a href="?team=読売ジャイアンツ">読売ジャイアンツ</a>
+                <a href="?team=阪神タイガース">阪神タイガース</a>
+                <a href="?team=中日ドラゴンズ">中日ドラゴンズ</a>
+                <a href="?team=横浜DeNAベイスターズ">横浜DeNAベイスターズ</a>
+                <a href="?team=広島東洋カープ">広島東洋カープ</a>
+                <a href="?team=東京ヤクルトスワローズ">東京ヤクルトスワローズ</a>
+                <a href="?team=オリックス・バファローズ">オリックス・バファローズ</a>
+                <a href="?team=福岡ソフトバンクホークス">福岡ソフトバンクホークス</a>
+                <a href="?team=北海道日本ハムファイターズ">北海道日本ハムファイターズ</a>
+                <a href="?team=千葉ロッテマリーンズ">千葉ロッテマリーンズ</a>
+                <a href="?team=埼玉西武ライオンズ">埼玉西武ライオンズ</a>
+                <a href="?team=東北楽天ゴールデンイーグルス">東北楽天ゴールデンイーグルス</a>
+                <a href="?team=大阪近鉄バファローズ">大阪近鉄バファローズ</a>
+                <a href="?team=その他">その他</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- 検索ボックス -->
+    <section class="search-box">
+        <input type="text" id="searchInput" placeholder="名前を入力">
+    </section>
+
+    <!-- 殿堂入りリスト（テーブル） -->
+    <section class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>氏名</th>
+                    <th>殿堂入り年</th>
+                    <th>カテゴリ</th>
+                    <th>所属チーム</th>
+                    <th>ショートプロフィール</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in page_obj %}
+                <tr>
+                    <td>{{ player.id }}</td>
+                    <td class="p_name">
+                    {% if player.slug %}
+                        <a href="{% url 'player_detail' player.slug %}">{{ player.name }}</a>
+                    {% else %}
+                        {{ player.name }}  <!-- スラッグが無い場合はリンクなし -->
+                    {% endif %}
+                    </td>
+                    <td>{{ player.year }}</td>
+                    <td>{{ player.category }}</td>
+                    <td>{{ player.team }}</td>
+                    <td>{{ player.profile }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ページネーション -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">« 最初</a>
+            <a href="?page={{ page_obj.previous_page_number }}">‹ 前</a>
+        {% endif %}
+
+        <span>ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">次 ›</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">最後 »</a>
+        {% endif %}
+    </div>
+    {% endblock %}
+
+    {% block extra_js %}
+        <script src="{% static 'js/p_script.js' %}"></script>
+    {% endblock %}
+
