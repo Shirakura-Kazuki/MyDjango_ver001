@@ -15,7 +15,18 @@
         <div class="logo">
             <img src="{% static 'images/logimg_main.png' %}" alt="博物館ロゴ">
         </div>
-        <nav>
+        <button class="menu-toggle" aria-label="ナビゲーションを開く">☰ＭＥＮＵ</button>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuToggle = document.querySelector(".menu-toggle");
+                const navMenu = document.querySelector(".nav-menu ul");
+
+                menuToggle.addEventListener("click", function () {
+                    navMenu.classList.toggle("show");
+                });
+            });
+        </script>
+        <nav class="nav-menu">
             <ul>
                 <li><a href="{% url 'home' %}"> Home </a></li>
                 <li class="main_title"><a href="{% url 'player' %}"> 殿堂選手紹介 </a></li>

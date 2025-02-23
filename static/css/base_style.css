@@ -10,22 +10,66 @@ body {
 }
 /* ======= ヘッダー全体のスタイル ======= */
 header {
-    
+    z-index: 1000;  
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 5px 10px; 
     background-color: white;
     border-bottom: 3px solid #c5a46d;
-    height: 80px;
-    
+    height:auto; 
 }
+
+
 
 /* ロゴのサイズ調整 */
 .logo img {
-    height: 90px;
-    display: block;
+    height:70px; /* 90px; */
+    /* display: block; */
 }
+
+/* 🔹 メニュー（PC用） */
+.nav-menu {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🔹 メニューアイテム */
+.nav-menu ul li {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #c5a46d;
+}
+
+/* 🔹 ハンバーガーメニュー（スマホ用） */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
 /* ======= ナビゲーションメニュー ======= */
 nav {
     flex-grow: 1;
@@ -89,15 +133,26 @@ nav ul li.active a::after {
 }
 
 
-/* レスポンシブ対応 */
+/* 🔹 スマホ用のメニュー */
 @media screen and (max-width: 768px) {
-    .slideshow {
-        max-height: 300px;
+    .nav-menu ul {
+        display: none; /* 最初は隠す */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        border-top: 3px solid #c5a46d;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
     }
-    
-    .prev, .next {
-        font-size: 20px;
-        padding: 5px;
+
+    .nav-menu ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* スマホで表示 */
     }
 }
 
