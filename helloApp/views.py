@@ -1,14 +1,40 @@
 from django.shortcuts import render , redirect ,get_object_or_404
 from django.core.paginator import Paginator
+import os , json
 from .models import Player
+from django.conf import settings
 
 # ニュースページ：ニュースの一覧を表示
 def news(request):
-    return render(request, 'helloApp/news.html')  # news.htmlを表示
+    # news.json のパス
+    json_path = os.path.join(settings.BASE_DIR, "news.json")
+
+    # JSONファイルを読み込む
+    try:
+        with open(json_path, "r", encoding="utf-8") as file:
+            news_list = json.load(file)
+            print( "OKリスト" , news_list)
+    except Exception as e:
+            print("JSON読み込みエラー:", e)
+            news_list = []  # エラー時は空リストにする
+
+    latest_news = news_list[0] if news_list else None  # 最新のお知らせを取得
+
+    return render(request, 'helloApp/news.html' , {"news_list": news_list, "latest_news": latest_news})  # news.htmlを表示
 
 # ホームページ：ホームページを表示
 def home(request):
-    return render(request, 'helloApp/home.html')  # home.htmlを表示
+    # news.json のパス
+    json_path = os.path.join(settings.BASE_DIR, "news.json")
+
+    # JSONファイルを読み込む
+    try:
+        with open(json_path, "r", encoding="utf-8") as file:
+            news_list = json.load(file)
+            latest_news = news_list[0] if news_list else None  # 最新のお知らせを取得
+    except Exception as e:
+        latest_news = None  # 読み込みエラー時は None
+    return render(request, 'helloApp/home.html' , {"latest_news": latest_news})  # home.htmlを表示
 
 # リクエストページ：リクエストページを表示
 def request(request):

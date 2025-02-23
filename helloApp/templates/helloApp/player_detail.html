@@ -160,8 +160,8 @@
                 </tr>
                 <tr>
                     <th>公式記録</th>
-                    <td><a href="{{ player.link }}" target="_blank" rel="noopener noreferrer">公式成績サイト</a></td>
-                </tr>
+                    <td><a href="{{ player.link }}" target="_blank" rel="noopener noreferrer">公式成績サイト</a>(npb.jp参照)</td>
+                    </tr>
                 <tr>
                     <th>タイトル</th>
                     <td>{{ player.title|linebreaksbr }}</td>
@@ -185,5 +185,59 @@
             }
         });
     </script>
+
+<button id="scrollTopBtn" class="scroll-top">⬆️</button>
+<style>
+/* 🔹 ボタンのデザイン */
+.scroll-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none; /* 初期状態では非表示 */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 ホバー時の効果 */
+.scroll-top:hover {
+    background: linear-gradient(135deg, #b8860b, #8b6508);
+    transform: scale(1.1);
+}
+
+/* 🔹 ボタンが表示される条件 */
+.show {
+    display: block;
+}
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+        // 🔹 スクロールしたらボタンを表示
+        window.addEventListener("scroll", function () {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+            } else {
+                scrollTopBtn.classList.remove("show");
+            }
+        });
+
+        // 🔹 クリックでページトップにスムーズに戻る
+        scrollTopBtn.addEventListener("click", function () {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth" // スムーズスクロール
+            });
+        });
+    });
+</script>
         
 {% endblock %}

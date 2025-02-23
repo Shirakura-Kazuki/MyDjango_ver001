@@ -1,7 +1,169 @@
 {% extends 'helloApp/base.html' %}
+{% load static %}
 
 {% block title %}お知らせ - プロ野球ダメ助っ人博物館{% endblock %}
 
 {% block content %}
-    <h1>新しい作成HTMLページです</h1>
+<style>
+    /* 🌟 ページ全体 */
+    body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #fffbda, #ffcf6d);
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🎯 重要なお知らせ（固定表示） */
+    .news-alert {
+        background: #FF5733;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* 📰 お知らせリスト */
+    .news-list {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 10px;
+    }
+
+    .news-list h2 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #444;
+    }
+
+    /* 🏆 各お知らせカード */
+    .news-card {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .news-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 📅 日付のスタイル */
+    .news-date {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* 📢 タイトルのスタイル */
+    .news-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0;
+        color: #FF5733;
+    }
+
+    /* 📝 内容のスタイル */
+    .news-content {
+        font-size: 14px;
+        color: #444;
+    }
+
+    /* 🎭 アニメーション */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- 🚀 重要なお知らせ -->
+<section class="news-alert">
+    {% if latest_news %}
+        <p>⚠️ <strong>最新のお知らせ</strong><br>  
+            {{ latest_news.date }} - {{ latest_news.title }} <br>
+            {{ latest_news.content }}
+        </p>
+    {% else %}
+        <p>⚠️ <strong>重要なお知らせ</strong><br> 現在、お知らせはありません。</p>
+    {% endif %}
+</section>
+
+<!-- 📰 お知らせリスト -->
+<section class="news-list">
+    <h2>📢 お知らせ一覧</h2>
+
+    {% for news in news_list %}
+        <div class="news-card">
+            <div class="news-date">📅 {{ news.date }}</div>
+            <div class="news-title">{{ news.title }}</div>
+            <div class="news-content">{{ news.content }}</div>
+        </div>
+    {% empty %}
+        <p style="text-align:center;">現在、お知らせはありません。</p>
+    {% endfor %}
+</section>
+
+<button id="scrollTopBtn" class="scroll-top">⬆️</button>
+        <style>
+        /* 🔹 ボタンのデザイン */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* 初期状態では非表示 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 🔹 ホバー時の効果 */
+        .scroll-top:hover {
+            background: linear-gradient(135deg, #b8860b, #8b6508);
+            transform: scale(1.1);
+        }
+
+        /* 🔹 ボタンが表示される条件 */
+        .show {
+            display: block;
+        }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+                // 🔹 スクロールしたらボタンを表示
+                window.addEventListener("scroll", function () {
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+                    } else {
+                        scrollTopBtn.classList.remove("show");
+                    }
+                });
+
+                // 🔹 クリックでページトップにスムーズに戻る
+                scrollTopBtn.addEventListener("click", function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth" // スムーズスクロール
+                    });
+                });
+            });
+        </script>
+
 {% endblock %}

@@ -1,7 +1,81 @@
 {% extends 'helloApp/base.html' %}
+{% load static %}
 
 {% block title %}投票リクエスト - プロ野球ダメ助っ人博物館{% endblock %}
 
 {% block content %}
     <h1>投票リクエスト</h1>
+    <style>
+        /* 全体の設定 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* 中央のコンテナ */
+        .container {
+            position: relative;
+            top: 30%;
+        }
+
+        /* 震えるテキスト */
+        .shaky-text {
+            font-size: 48px;
+            font-weight: bold;
+            display: inline-block;
+            animation: shake 0.3s infinite alternate;
+            color: yellow;
+            text-shadow: 2px 2px 10px rgba(255, 255, 0, 0.8);
+        }
+
+        @keyframes shake {
+            from { transform: translateX(-2px) rotate(-1deg); }
+            to { transform: translateX(2px) rotate(1deg); }
+        }
+
+        /* 無駄に光る工事マーク */
+        .blinking {
+            font-size: 24px;
+            margin-top: 20px;
+            display: inline-block;
+            animation: blink 0.8s infinite alternate;
+            color: orange;
+        }
+
+        @keyframes blink {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+
+        /* 無駄に浮遊する顔アイコン */
+        .floating {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 50%;  /* 上から50% */
+            left: 50%; /* 左から50% */
+            transform: translate(-50%, -50%); /* ど真ん中に調整 */
+            animation: floaty 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes floaty {
+            from { transform: translateX(-50%) translateY(10px) rotate(0deg); }
+            to { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="shaky-text">COMING SOON...</div><br>
+        <div class="blinking">💡 現在開発中！しばらくお待ちください 💡</div>
+    </div>
+
+    <!-- 無駄にフワフワ動く顔アイコン -->
+    <img src="{% static 'images/logimg_main.png' %}" class="floating" alt="謎の顔">
+
+</body>
 {% endblock %}

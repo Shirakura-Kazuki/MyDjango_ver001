@@ -3,5 +3,116 @@
 {% block title %}お問い合わせフォーム - プロ野球ダメ助っ人博物館{% endblock %}
 
 {% block content %}
-    <h1>お問い合わせを表示する</h1>
+<style>
+    /* 🌟 ページ全体のスタイル */
+    body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        background: linear-gradient(135deg, #e3b8b8, #fee6c2);  /* 明るいオレンジグラデーション */
+        color: #333;
+        margin: 0;
+        padding: 0;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* 🎯 タイトルデザイン */
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 50px;
+        animation: float 2s ease-in-out infinite alternate;
+    }
+
+    /* 🎭 フォームコンテナ（問い合わせの枠） */
+    .form-container {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        margin: auto;
+        margin-top: 30px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    /* ✨ ホバー時の浮き上がりエフェクト */
+    .form-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🚀 フォームの説明文 */
+    .form-container p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    /* 🌟 お問い合わせボタン */
+    .form-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007BFF, #0056b3);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 🌟 ボタンの光るエフェクト */
+    .form-button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 40%);
+        transition: opacity 0.6s ease-in-out;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .form-button:hover::after {
+        opacity: 1;
+    }
+
+    /* ✨ ボタンのホバーアニメーション */
+    .form-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🎭 アニメーション */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+        from { transform: translateY(0px); }
+        to { transform: translateY(10px); }
+    }
+</style>
+
+<!-- 🔥 お問い合わせフォーム -->
+<h1>📢 お問い合わせはこちら！</h1>
+<div class="form-container">
+    <p>💡 ご質問・リクエストは、Googleフォームで受付中！</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMq3ynyL0gzSijwElpTbxsrGLiz3PzKXvDKgJM_7JzePY6wQ/viewform?usp=dialog"
+       class="form-button" target="_blank">🚀 Googleフォームへ</a>
+</div>
+
 {% endblock %}

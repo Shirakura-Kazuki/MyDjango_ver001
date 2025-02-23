@@ -10,19 +10,35 @@
 {% block content %}
     <!-- 重要なお知らせ(モック：next（<p>にはデータベースに入っている最新のニュースを更新出来るようにする）) -->
         <section class="news-alert">
-            <p><strong>重要なお知らせ</strong> 2024/12/04 入館料改定およびキャッシュレス対応のお知らせ</p>
+            {% if latest_news %}
+                <p><strong>重要なお知らせ</strong><br> {{ latest_news.date }} {{ latest_news.title }}</p>
+            {% else %}
+                <p><strong>重要なお知らせ</strong><br> 現在、お知らせはありません。</p>
+            {% endif %}
         </section>
     
         <!-- メインスライドショー -->
         <section class="slideshow">
+            <!-- スライド1: -->
             <div class="slide fade">
-                <img src="{% static 'images/img1.png' %}" alt="スライド1">
+                <a href="{% url 'news' %}">
+                    <img src="{% static 'images/img1.png' %}" alt="スライド1">
+                </a>
+                <div class="slide-caption">
+                    <h2>企画展「野球殿堂1959〜2025」</h2>
+                </div>
             </div>
+            <!-- スライド2: -->
             <div class="slide fade">
-                <img src="{% static 'images/img2.png' %}" alt="スライド2">
+                <a href="{% url 'news' %}">
+                    <img src="{% static 'images/img2.png' %}" alt="スライド2">
+                </a>
             </div>
+            <!-- スライド3: -->
             <div class="slide fade">
-                <img src="{% static 'images/img1.png' %}" alt="スライド3">
+                <a href="{% url 'news' %}">
+                    <img src="{% static 'images/img1.png' %}" alt="スライド3">
+                </a>
             </div>
     
             <!-- スライドナビゲーションボタン -->
@@ -40,28 +56,42 @@
     
         <script src="{% static 'js/slideshow.js' %}" defer></script>
 
+        <section class="pick_up_section">
+            <div class="pick_up_banner">
+                <h1 class="pick_up_text">PICK UP</h1>
+                <p class="pick_up_subtext">ピックアップ</p>
+            </div>
+            <div class="pick_up_image">
+                <img src="{% static 'images/baseball_player.png' %}" alt="野球選手">
+            </div>
+        </section>
+        
+
         <section class="event-section">
             <div class="event-container">
+                <!-- イベント情報1 -->
                 <div class="event-card">
-                    <img src="{% static 'images/event1.jpg' %}" alt="イベント1">
+                    <img src="{% static 'images/img1.png' %}"  alt="イベント1">
                     <div class="event-content">
                         <span class="event-label event">イベント</span>
                         <h3>野球の学校 井野 修氏 トークイベント開催</h3>
                         <p>2025年2月24日（月） 15:00～16:00</p>
                     </div>
                 </div>
-        
+
+                <!-- イベント情報2 -->
                 <div class="event-card">
-                    <img src="{% static 'images/exhibit1.jpg' %}" alt="展示">
+                    <img src="{% static 'images/img1.png' %}" alt="展示">
                     <div class="event-content">
                         <span class="event-label exhibit">展示</span>
                         <h3>企画展「野球殿堂1959〜2025」</h3>
                         <p>2025年3月1日（土）～7月6日（日）</p>
                     </div>
                 </div>
-        
+
+                <!-- イベント情報3 -->
                 <div class="event-card">
-                    <img src="{% static 'images/hall1.jpg' %}" alt="殿堂">
+                    <img src="{% static 'images/img1.png' %}" alt="殿堂">
                     <div class="event-content">
                         <span class="event-label hall">殿堂</span>
                         <h3>2025年 野球殿堂入り発表</h3>
@@ -70,6 +100,60 @@
                 </div>
             </div>
         </section>
+    
+        <button id="scrollTopBtn" class="scroll-top">⬆️</button>
+        <style>
+        /* 🔹 ボタンのデザイン */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #d4af37, #b8860b);
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* 初期状態では非表示 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 🔹 ホバー時の効果 */
+        .scroll-top:hover {
+            background: linear-gradient(135deg, #b8860b, #8b6508);
+            transform: scale(1.1);
+        }
+
+        /* 🔹 ボタンが表示される条件 */
+        .show {
+            display: block;
+        }
+        </style>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+                // 🔹 スクロールしたらボタンを表示
+                window.addEventListener("scroll", function () {
+                    if (window.scrollY > 300) {
+                        scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+                    } else {
+                        scrollTopBtn.classList.remove("show");
+                    }
+                });
+
+                // 🔹 クリックでページトップにスムーズに戻る
+                scrollTopBtn.addEventListener("click", function () {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth" // スムーズスクロール
+                    });
+                });
+            });
+        </script>
         
     
 {% endblock %}
