@@ -110,8 +110,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
             color: white;
             font-size: 24px;
@@ -121,6 +121,15 @@
             display: none; /* 初期状態では非表示 */
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease-in-out;
+
+             /* 🔹 アイコンを中央配置 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 🔹 アイコンサイズを適切に調整 */
+        .scroll-top i {
+            font-size: 20px; /* 🔹 アイコンが大きすぎるので適切なサイズに */
         }
 
         /* 🔹 ホバー時の効果 */
