@@ -199,23 +199,19 @@
     /* 🔹 スクロールトップボタンのデザイン */
     .scroll-top {
         position: fixed;
-        bottom: 20px;
-        right: 20px;
+        bottom: 10vh;
+        right: 5vw;
         width: 50px;
         height: 50px;
         background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
         color: white;
         font-size: 24px;
         border: none;
-        border-radius: 20%;
+        border-radius: 50%;
         cursor: pointer;
         display: none; /* 初期状態では非表示 */
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
         transition: all 0.3s ease-in-out;
-
-         /* 🔹 アイコンを中央配置 */
-        justify-content: center;
-        align-items: center;
     }
 
     /* 🔹 アイコンサイズを適切に調整 */
@@ -231,7 +227,9 @@
 
     /* 🔹 ボタンが表示される条件 */
     .show {
-        display: block;
+        display: flex;  /* 🔥 ここで適用 */
+        justify-content: center;
+        align-items: center;
     }
     </style>
 
