@@ -1,168 +1,37 @@
-/* 全体のスタイル */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+<!-- 🔹 検索フォームとフィルターボタンのエリア -->
+<section class="search-filter-container">
+    <input type="text" id="searchInput" class="search-box" placeholder="名前を入力">
+    <button id="filterToggle" class="filter-btn"><i class="fa-solid fa-filter"></i> 検索フィルター</button>
+</section>
 
-
-/* フィルターボタン */
-.filter-section {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.filter-btn {
-    text-decoration: none;
-    background-color: #c5a46d;
-    color: white;
-    padding: 12px 18px;
-    margin: 5px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.filter-btn:hover {
-    background-color: #a08154;
-    transform: scale(1.05);
-}
-
-/* ドロップダウンメニュー */
-.dropdown {
-    display: inline-block;
-    position: relative;
-}
-
-.dropdown-btn {
-    background-color: #c5a46d;
-    color: white;
-    border: none;
-    padding: 12px 18px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 25px;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: white;
-    min-width: 200px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    z-index: 100;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 10px;
-    text-decoration: none;
-    display: block;
-    font-size: 14px;
-    padding: 10px 15px;
-    white-space: nowrap;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-/* ホバーでメニューを表示 */
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-/* 検索ボックス */
-.search-box {
-    margin: 20px auto;
-    width: 60%;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 12px;
-    border: 2px solid #c5a46d;
-    border-radius: 25px;
-    font-size: 16px;
-    text-align: center;
-    transition: all 0.3s ease-in-out;
-}
-
-.search-box input:focus {
-    border-color: #a08154;
-    outline: none;
-    box-shadow: 0 0 5px rgba(165, 130, 100, 0.5);
-}
-
-/* テーブル */
-.table-container {
-    margin: 20px auto;
-    width: 80%;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th, td {
-    padding: 14px;
-    border: 1px solid #ddd;
-}
-
-th {
-    background-color: #c5a46d;
-    color: white;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
-    background-color: #f9f9f9;
-}
-
-tr:hover {
-    background-color: #f1f1f1;
-}
-
-/* ページネーション */
-.pagination {
-    margin-top: 30px;
-    margin-bottom: 30px;
-    text-align: center;
-}
-
-.pagination a {
-    text-decoration: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    background-color: #c5a46d;
-    color: white;
-    border-radius: 25px;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-}
-
-.pagination a:hover {
-    background-color: #a08154;
-    transform: scale(1.1);
-}
-
-.pagination span {
-    font-weight: bold;
-    margin: 0 10px;
-}
-
-/* スマホ対応 */
-@media (max-width: 768px) {
-    .header {
-        height: 60px; /* スマホでは高さを縮小 */
-    }
-    .search-box {
-        width: 80%;
-    }
-}
+<!-- 🔹 フィルターエリア（モーダル風） -->
+<div id="filterMenu" class="filter-menu">
+    <div class="filter-content">
+        <button id="closeFilter" class="close-btn">×</button>
+        <h2>検索フィルター</h2>
+        <ul>
+            <li><a href="?category=">全員表示</a></li>
+            <li><a href="?category=選手">選手</a></li>
+            <li><a href="?category=その他">その他</a></li>
+            <li class="dropdown">
+                <span>所属チーム ▼</span>
+                <ul class="dropdown-content">
+                   <a href="?team=読売ジャイアンツ">読売ジャイアンツ</a>
+                    <a href="?team=阪神タイガース">阪神タイガース</a>
+                    <a href="?team=中日ドラゴンズ">中日ドラゴンズ</a>
+                    <a href="?team=横浜DeNAベイスターズ">横浜DeNAベイスターズ</a>
+                    <a href="?team=広島東洋カープ">広島東洋カープ</a>
+                    <a href="?team=東京ヤクルトスワローズ">東京ヤクルトスワローズ</a>
+                    <a href="?team=オリックス・バファローズ">オリックス・バファローズ</a>
+                    <a href="?team=福岡ソフトバンクホークス">福岡ソフトバンクホークス</a>
+                    <a href="?team=北海道日本ハムファイターズ">北海道日本ハムファイターズ</a>
+                    <a href="?team=千葉ロッテマリーンズ">千葉ロッテマリーンズ</a>
+                    <a href="?team=埼玉西武ライオンズ">埼玉西武ライオンズ</a>
+                    <a href="?team=東北楽天ゴールデンイーグルス">東北楽天ゴールデンイーグルス</a>
+                    <a href="?team=大阪近鉄バファローズ">大阪近鉄バファローズ</a>
+                    <a href="?team=その他">その他</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

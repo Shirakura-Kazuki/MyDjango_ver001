@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {% endblock %}
 
-
 {% block title %}殿堂選手紹介 - プロ野球ダメ助っ人博物館{% endblock %}
 
 {% block content %}
@@ -15,39 +14,44 @@
         <h1>殿堂選手紹介</h1>
     </header>
     
-
-    <!-- フィルターボタン -->
-    <section class="filter-section">
-        <a href="?category=" class="filter-btn">全員表示</a>
-        <a href="?category=選手" class="filter-btn">選手</a>
-        <a href="?category=その他" class="filter-btn">その他</a>
-        <!-- 所属チームフィルター -->
-        <div class="dropdown">
-            <button class="filter-btn dropdown-btn">所属チーム</button>
-            <div class="dropdown-content">
-                <a href="?team=読売ジャイアンツ">読売ジャイアンツ</a>
-                <a href="?team=阪神タイガース">阪神タイガース</a>
-                <a href="?team=中日ドラゴンズ">中日ドラゴンズ</a>
-                <a href="?team=横浜DeNAベイスターズ">横浜DeNAベイスターズ</a>
-                <a href="?team=広島東洋カープ">広島東洋カープ</a>
-                <a href="?team=東京ヤクルトスワローズ">東京ヤクルトスワローズ</a>
-                <a href="?team=オリックス・バファローズ">オリックス・バファローズ</a>
-                <a href="?team=福岡ソフトバンクホークス">福岡ソフトバンクホークス</a>
-                <a href="?team=北海道日本ハムファイターズ">北海道日本ハムファイターズ</a>
-                <a href="?team=千葉ロッテマリーンズ">千葉ロッテマリーンズ</a>
-                <a href="?team=埼玉西武ライオンズ">埼玉西武ライオンズ</a>
-                <a href="?team=東北楽天ゴールデンイーグルス">東北楽天ゴールデンイーグルス</a>
-                <a href="?team=大阪近鉄バファローズ">大阪近鉄バファローズ</a>
-                <a href="?team=その他">その他</a>
-            </div>
-        </div>
+    <!-- 🔹 検索フォーム & フィルターボタン -->
+    <section class="search-filter-container">
+        <input type="text" id="searchInput" class="search-box" placeholder="名前を入力">
+        <button id="filterToggle" class="filter-btn">
+            <i class="fa-solid fa-filter"></i> 検索フィルター</button>
     </section>
 
-
-    <!-- 検索ボックス -->
-    <section class="search-box">
-        <input type="text" id="searchInput" placeholder="名前を入力">
-    </section>
+<!-- 🔹 フィルターメニュー -->
+<div id="filterMenu" class="filter-menu">
+    <div class="filter-content">
+        <button id="closeFilter" class="close-btn">×</button>
+        <h2>検索フィルター</h2>
+        <ul>
+            <li><a href="?category=">全員表示</a></li>
+            <li><a href="?category=選手">選手</a></li>
+            <li><a href="?category=その他">その他</a></li>
+            <li class="dropdown">
+                <span>所属チーム ▼</span>
+                <ul class="dropdown-content">
+                    <a href="?team=読売ジャイアンツ">読売ジャイアンツ</a>
+                    <a href="?team=阪神タイガース">阪神タイガース</a>
+                    <a href="?team=中日ドラゴンズ">中日ドラゴンズ</a>
+                    <a href="?team=横浜DeNAベイスターズ">横浜DeNAベイスターズ</a>
+                    <a href="?team=広島東洋カープ">広島東洋カープ</a>
+                    <a href="?team=東京ヤクルトスワローズ">東京ヤクルトスワローズ</a>
+                    <a href="?team=オリックス・バファローズ">オリックス・バファローズ</a>
+                    <a href="?team=福岡ソフトバンクホークス">福岡ソフトバンクホークス</a>
+                    <a href="?team=北海道日本ハムファイターズ">北海道日本ハムファイターズ</a>
+                    <a href="?team=千葉ロッテマリーンズ">千葉ロッテマリーンズ</a>
+                    <a href="?team=埼玉西武ライオンズ">埼玉西武ライオンズ</a>
+                    <a href="?team=東北楽天ゴールデンイーグルス">東北楽天ゴールデンイーグルス</a>
+                    <a href="?team=大阪近鉄バファローズ">大阪近鉄バファローズ</a>
+                    <a href="?team=その他">その他</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 
     <!-- 殿堂入りリスト（テーブル） -->
     <section class="table-container">

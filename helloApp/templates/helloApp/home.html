@@ -102,67 +102,6 @@
             </div>
         </section>
     
-    <div class="ScrollTopBtn(link.css)">      
-        <!--  スクロールトップボタン -->
-        <button id="scrollTopBtn" class="scroll-top">
-            <i class="fa-solid fa-arrow-up"></i>
-        </button>
-
-        <style>
-        /* 🔹 スクロールトップボタンのデザイン */
-        .scroll-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            width: 45px;
-            height: 45px;
-            background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
-            color: white;
-            font-size: 24px;
-            border: none;
-            border-radius: 20%;
-            cursor: pointer;
-            display: none; /* 初期状態では非表示 */
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
-        }
-
-        /* 🔹 ホバー時の効果 */
-        .scroll-top:hover {
-            background: rgba(0, 0, 0, 0.7); /* 🔹 ホバー時に少し濃くする */
-            transform: scale(1.1);
-        }
-
-        /* 🔹 ボタンが表示される条件 */
-        .show {
-            display: block;
-        }
-        </style>
-
-        <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            let scrollTopBtn = document.getElementById("scrollTopBtn");
-
-            // 🔹 スクロールしたらボタンを表示
-            window.addEventListener("scroll", function () {
-                if (window.scrollY > 300) {
-                    scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
-                } else {
-                    scrollTopBtn.classList.remove("show");
-                }
-            });
-
-            // 🔹 クリックでページトップにスムーズに戻る
-            scrollTopBtn.addEventListener("click", function () {
-                window.scrollTo({
-                    top: 0,
-                    behavior: "smooth" // スムーズスクロール
-                });
-            });
-        });
-        </script>
-    </div>
-    
 {% endblock %}
 
 
