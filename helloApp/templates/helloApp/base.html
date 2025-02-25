@@ -2,6 +2,7 @@
 {% load static %}
 <html lang="ja">
 <head>
+    {% block meta_tags %}{% endblock %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}プロ野球ダメ助っ人博物館{% endblock %}</title>
@@ -115,7 +116,7 @@
     <!-- フッター -->
     <footer>
         <ul>
-            <li><a href="#">ご意見・ご要望</a></li>
+            <li><a href="{% url 'direct' %}">ご意見・ご要望</a></li>
             <li><a href="#">プライバシーポリシー</a></li>
             <li><a href="#">サイトポリシー</a></li>
         </ul>

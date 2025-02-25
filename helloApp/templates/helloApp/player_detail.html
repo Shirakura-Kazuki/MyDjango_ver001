@@ -1,11 +1,16 @@
 {% extends 'helloApp/base.html'%}
 {% load static %}
-
+{% block meta_tags %}
+     <!-- ✅ メタディスクリプションに日本語の名前を含める -->
+     <meta name="description" content="{{ player.name }}の詳細情報を紹介します。">
+     <!-- ✅ canonicalタグで「yamada-taro」を正規URLとして指定 -->
+     <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'player_detail' slug=player.slug %}">
+{% endblock %}
 {% block extra_css %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {% endblock %}
 
-{% block title %}{{ player.name }} - 詳細ページ{% endblock %}
+{% block title %}{{ player.name }} {{ player.slug}} - 詳細ページ{% endblock %}
 
 {% block content %}    
     <body>

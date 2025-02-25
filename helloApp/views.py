@@ -3,6 +3,7 @@ from django.core.paginator import Paginator
 import os , json
 from .models import Player
 from django.conf import settings
+from django.views import View
 
 # ニュースページ：ニュースの一覧を表示
 def news(request):
@@ -69,3 +70,16 @@ def player(request):
 # お問い合わせページ：お問い合わせページを表示
 def direct(request):
     return render(request, 'helloApp/direct.html')  # direct.htmlを表示
+
+# ✅ プレイヤー詳細（スラッグ経由）
+def player_detail(request, slug):
+    player = get_object_or_404(Player, slug=slug)  # 🔹 スラッグでデータ取得
+    return render(request, "helloApp/player_detail.html", {"player": player})
+
+
+# ✅ 名前でアクセスしてきた場合にスラッグにリダイレクトするビュー
+class PlayerRedirectView(View):
+    def get(self, request, name):
+        # 🔹 名前から該当するスラッグを取得
+        player = get_object_or_404(Player, name=name)
+        return redirect('player_detail', slug=player.slug, permanent=True)  # 🔹 301リダイレクト
