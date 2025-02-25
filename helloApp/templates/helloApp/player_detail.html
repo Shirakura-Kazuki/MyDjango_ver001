@@ -48,7 +48,7 @@
                     }
 
                     .player-info img {
-                        width: 45%;
+                        width: 55%;
                         height: auto;
                         border-radius: 10px;
                         border: 2px solid #ccc;
@@ -110,6 +110,13 @@
 
                     .breadcrumb a:hover {
                         text-decoration: underline;
+                    }
+
+                    /* スマホ表示用（幅768px以下の画面サイズ） */
+                    @media screen and (max-width: 768px) {
+                        .player-info img {
+                            width: 80%; /* スマホのときは画像をページ幅の75%に拡大 */
+                        }
                     }
             </style>
 
