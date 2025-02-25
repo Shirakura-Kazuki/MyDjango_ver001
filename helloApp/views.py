@@ -83,3 +83,14 @@ class PlayerRedirectView(View):
         # 🔹 名前から該当するスラッグを取得
         player = get_object_or_404(Player, name=name)
         return redirect('player_detail', slug=player.slug, permanent=True)  # 🔹 301リダイレクト
+    
+# ポリシー設定ページ：ポリシー設定ページを表示
+def policy_1(request):
+    return render(request, 'helloApp/policy_1.html')  
+
+# ポリシー設定ページ：ポリシー設定ページを表示
+def policy_2(request):
+    return render(request, 'helloApp/policy_2.html')  
+
+def question(request):
+    return render(request, 'helloApp/question.html')  # question.htmlを表示

@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     showSlides(slideIndex);
 
     // 3秒ごとに自動スライド
-    setInterval(nextSlide, 3000);
+    setInterval(nextSlide, 5000);
 });
 
 // スライドの表示を更新する関数

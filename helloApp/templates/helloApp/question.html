@@ -1,0 +1,166 @@
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about_style.css' %}">
+{% endblock %}
+
+{% block title %}愛すべきダメ助っ人博物館 - その魅力と哲学{% endblock %}
+
+{% block content %}
+    <style>
+        /* Apple風のシンプルかつ洗練されたデザイン */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1c1c1c, #111);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .about-container, .philosophy-container, .features-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            width: 30%;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+            padding: 20px;
+            background: #222;
+        }
+
+        .cta h2 {
+            font-size: 28px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffcc00;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ffaa00;
+        }
+
+    </style>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>愛すべきダメ助っ人博物館</h1>
+            <p>〜 歴史が証明する、助っ人たちの挑戦 〜</p>
+        </div>
+    </section>
+
+    <section class="about-intro">
+        <div class="about-container">
+            <h2>「ダメ助っ人」ではない、<br>「愛すべき助っ人」たちの記録</h2>
+            <p>
+                プロ野球の歴史には、多くの助っ人外国人選手が名を連ねました。  
+                彼らは「救世主」として期待され、時には「ダメ助っ人」と揶揄されながらも、日本の野球に情熱を捧げました。  
+                本サイトは、そんな彼らの「戦い」と「魅力」をアーカイブし、再評価する場です。
+            </p>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-container">
+            <h2>哲学 & ミッション</h2>
+            <p>
+                **歴史は勝者のものだけではない。**  
+                我々は、結果だけでは語り尽くせない「挑戦の価値」を見つめます。  
+                彼らの存在は、成功の陰にある「失敗」の美学を教えてくれます。
+            </p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-item">
+                <h3>🔎 記録とデータ</h3>
+                <p>選手の成績、インタビュー、歴史的背景を分析し、詳細なデータベースを構築。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📖 ストーリー</h3>
+                <p>助っ人たちの栄光と挫折、その裏側にあるドラマを深掘り。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🌏 グローバルな視点</h3>
+                <p>海外リーグとの比較、日本独自の助っ人文化の変遷を探る。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>「勝者」ではなく、「挑戦者」にスポットライトを。</h2>
+        <p>あなたの記憶に残る助っ人は誰ですか？</p>
+        <a href="{% url 'player' %}" class="cta-button">選手リストを見る</a>
+    </section>
+
+{% endblock %}

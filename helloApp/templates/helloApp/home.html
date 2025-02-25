@@ -5,6 +5,8 @@
     <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {% endblock %}
+{% include 'customPage.html' %}
+
 
 {% block title %}ホーム - プロ野球ダメ助っ人博物館{% endblock %}
 
@@ -21,26 +23,38 @@
         <!-- メインスライドショー -->
         <section class="slideshow">
             <!-- スライド1: -->
+            {% with url='question' image="images/t_job.png"  text="愛すべきダメ助っ人博物館とは？"  %}
             <div class="slide fade">
-                <a href="{% url 'news' %}">
-                    <img src="{% static 'images/img1.png' %}" alt="スライド1">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド1">
                 </a>
                 <div class="slide-caption">
-                    <h2>企画展「野球殿堂1959〜2025」</h2>
+                    <h2>{{text}}</h2>
                 </div>
             </div>
+            {% endwith %}
             <!-- スライド2: -->
+            {% with url='request' image="images/event_job.png"  text="第1回殿堂選手投票イベント開始"  %}
             <div class="slide fade">
-                <a href="{% url 'news' %}">
-                    <img src="{% static 'images/img2.png' %}" alt="スライド2">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド2">
                 </a>
+                <div class="slide-caption">
+                    <h2>{{text}}</h2>
+                </div>
             </div>
+            {% endwith %}
             <!-- スライド3: -->
+             {% with url='player' image="images/player_job.png"  text="殿堂選手紹介"  %}
             <div class="slide fade">
-                <a href="{% url 'news' %}">
-                    <img src="{% static 'images/img1.png' %}" alt="スライド3">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド3">
                 </a>
+                <div class="slide-caption">
+                    <h2>{{text}}</h2>
+                </div>
             </div>
+            {% endwith %}
     
             <!-- スライドナビゲーションボタン -->
             <button class="prev" onclick="prevSlide()">&#10094;</button>
@@ -68,39 +82,49 @@
         </section>
         
 
-        <section class="event-section">
-            <div class="event-container">
-                <!-- イベント情報1 -->
-                <div class="event-card">
-                    <img src="{% static 'images/img1.png' %}"  alt="イベント1">
-                    <div class="event-content">
-                        <span class="event-label event">イベント</span>
-                        <h3>野球の学校 井野 修氏 トークイベント開催</h3>
-                        <p>2025年2月24日（月） 15:00～16:00</p>
-                    </div>
-                </div>
-
-                <!-- イベント情報2 -->
-                <div class="event-card">
-                    <img src="{% static 'images/img1.png' %}" alt="展示">
-                    <div class="event-content">
-                        <span class="event-label exhibit">展示</span>
-                        <h3>企画展「野球殿堂1959〜2025」</h3>
-                        <p>2025年3月1日（土）～7月6日（日）</p>
-                    </div>
-                </div>
-
-                <!-- イベント情報3 -->
-                <div class="event-card">
-                    <img src="{% static 'images/img1.png' %}" alt="殿堂">
-                    <div class="event-content">
-                        <span class="event-label hall">殿堂</span>
-                        <h3>2025年 野球殿堂入り発表</h3>
-                        <p>イチロー氏、岩瀬仁紀氏、掛布雅之氏らが殿堂入り！</p>
-                    </div>
+         <!-- イベントセクション -->
+    <section class="event-section">
+        <div class="event-container">
+            
+            <!-- イベント情報1 -->
+            {% with image="images/event_job.png" label="イベント" title="第1回殿堂選手投票イベント開始" date="2025年3月部門 投票開始" %}
+            <div class="event-card">
+                <img src="{% static image %}" alt="イベント1">
+                <div class="event-content">
+                    <span class="event-label event">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ date }}</p>
                 </div>
             </div>
-        </section>
+            {% endwith %}
+
+            <!-- イベント情報2 -->
+            {% with image="images/news_job.png" label="ニュース" title="ダメ助っ人博物館オープン！" date="2025年2月25日（火）～" %}
+            <div class="event-card">
+                <img src="{% static image %}" alt="ニュース">
+                <div class="event-content">
+                    <span class="event-label exhibit">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ date }}</p>
+                </div>
+            </div>
+            {% endwith %}
+
+            <!-- イベント情報3 -->
+            {% with image="images/player_job.png" label="殿堂" title="愛すべき助っ人殿堂入り発表" description="2014年楽天に入団したユーキリス選手が殿堂入り！" %}
+            
+            <div class="event-card">
+                <img src="{% static image %}" alt="殿堂">
+                <div class="event-content">
+                    <span class="event-label hall">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ description }}</p>
+                </div>
+            </div>
+            {% endwith %}
+
+        </div>
+    </section>
     
 {% endblock %}
 
