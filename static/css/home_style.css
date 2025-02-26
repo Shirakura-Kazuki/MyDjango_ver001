@@ -10,9 +10,11 @@
 /* スライドショー */
 .slideshow {
     position: relative;
-    width: 100vw;
+    /* width: 100vw; */
+    width: 90%;
     height: 100vh;
     overflow: hidden;
+    margin: 0 auto; /* ✅ 中央揃え */
     /* width: 100%;
     max-height: 500px;  */
     /* display: flex;
@@ -118,6 +120,7 @@
 @media screen and (max-width: 768px) {
     .slideshow {
         max-height: 300px;
+        width: 100vw;
     }
     
     .prev, .next {
