@@ -1,6 +1,11 @@
 from django.urls import path
 from . import views
 from .views import player_detail , PlayerRedirectView
+# from django.contrib.sitemaps.views import sitemap
+# from .sitemaps import sitemaps
+# from .views import robots_txt  # robots.txt のビューを追加
+
+
 
 urlpatterns = [
     path('news/', views.news, name='news'), # ニュースページ

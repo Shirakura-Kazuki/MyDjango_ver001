@@ -5,6 +5,7 @@ from .models import Player
 from django.conf import settings
 from django.views import View
 
+
 # ニュースページ：ニュースの一覧を表示
 def news(request):
     # news.json のパス
@@ -94,3 +95,12 @@ def policy_2(request):
 
 def question(request):
     return render(request, 'helloApp/question.html')  # question.htmlを表示
+
+from django.http import HttpResponse
+
+def robots_txt(request):
+    content = """User-agent: *
+Disallow:
+
+Sitemap: https://baseball-love-helper-museum.onrender.com/sitemap.xml"""
+    return HttpResponse(content, content_type="text/plain")

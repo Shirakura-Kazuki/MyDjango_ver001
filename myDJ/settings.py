@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # 今回作成したアプリ
     'helloApp',
+    "django.contrib.sitemaps"
 ]
 
 MIDDLEWARE = [
@@ -133,7 +134,7 @@ STATICFILES_DIRS = [
 STATIC_ROOT = str(BASE_DIR / "staticfiles")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-MADIR_URL = "/media/"
+MEDIR_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 
