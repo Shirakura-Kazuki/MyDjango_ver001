@@ -15,7 +15,6 @@ urlpatterns = [
     path('hello/', include('helloApp.urls')),
 
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),  
-    # path("robots.txt", robots_txt, name="robots_txt"),  # robots.txt を追加
 ]
 
 # 画像ファイルのURLパターンを追加

@@ -4,6 +4,7 @@ import os , json
 from .models import Player
 from django.conf import settings
 from django.views import View
+from django.http import HttpResponse
 
 
 # ニュースページ：ニュースの一覧を表示
@@ -96,11 +97,12 @@ def policy_2(request):
 def question(request):
     return render(request, 'helloApp/question.html')  # question.htmlを表示
 
-from django.http import HttpResponse
+
+
 
 def robots_txt(request):
     content = """User-agent: *
-Disallow:
+Allow: /
 
 Sitemap: https://baseball-love-helper-museum.onrender.com/sitemap.xml"""
     return HttpResponse(content, content_type="text/plain")

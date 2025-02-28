@@ -16,9 +16,24 @@
     gtag('config', 'G-CWCWMBNQ9R');
     </script>
 
+    <!-- OGP (Open Graph Protocol) メタタグ （テスト実装）-->
+        <meta property="og:title" content="{% block og_title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人ランキング{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！爆笑エピソード＆ランキングあり！{% endblock %}">
+        <meta property="og:image" content="{% static 'images/og_image.png' %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人ランキング{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！{% endblock %}">
+        <meta name="twitter:image" content="{% static 'images/og_image.png' %}">
+        <meta name="twitter:site" content="@official_Chawai">
+        <meta name="twitter:creator" content="@official_Chawai">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}プロ野球ダメ助っ人博物館{% endblock %}</title>
+    <title>{% block title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人伝説の助っ人選手殿堂おもしろエピソード334選ランキング{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！爆笑エピソード＆ランキングあり！{% endblock %}">
+
     <link rel="icon" href="{% static 'images/logimg_main.png' %}">
     <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
     {% block extra_css %}{% endblock %}
@@ -125,6 +140,42 @@
         });
         </script>
     </div>
+
+    <div class="twitter-share">
+        <a href="https://twitter.com/intent/tweet?text=【爆笑】歴代ダメ助っ人外国人選手！&url={{ request.build_absolute_uri }}&via=official_Chawai&hashtags=プロ野球,ダメ助っ人,クソ助っ人" 
+           target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-twitter"></i> シェアする
+        </a>
+    </div>
+    
+    <style>
+    .twitter-share {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .twitter-share a {
+        display: inline-block;
+        background-color: #1DA1F2;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+    
+    .twitter-share a:hover {
+        background-color: #0d8be6;
+    }
+    
+    .twitter-share i {
+        margin-right: 8px;
+    }
+    </style>
+    
+
 
     <!-- フッター -->
     <footer>
