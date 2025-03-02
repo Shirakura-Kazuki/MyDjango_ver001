@@ -43,7 +43,10 @@
     <!-- ヘッダー -->
     <header>
         <div class="logo">
-            <img src="{% static 'images/logimg_main.png' %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館ロゴ">
+            <picture>
+                <source srcset="{% static 'images/logimg_main.webp' %}" type="image/webp">
+                <img src="{% static 'images/logimg_main.png' %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館ロゴ">
+            </picture>
         </div>
         <button class="menu-toggle" aria-label="ナビゲーションを開く">☰ＭＥＮＵ</button>
         <script>

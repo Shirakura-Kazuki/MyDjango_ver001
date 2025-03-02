@@ -79,7 +79,10 @@
                 <p class="pick_up_subtext">ピックアップ</p>
             </div>
             <div class="pick_up_image">
-                <img src="{% static 'images/baseball_player.png' %}" alt="2006年WBC日本代表監督とボブデービットソン風の男性">
+                <picture>
+                    <source srcset="{% static 'images/baseball_player.webp' %}" type="image/webp">
+                    <img src="{% static 'images/baseball_player.png' %}" alt="2006年WBC日本代表監督とボブデービットソン風の男性">
+                </picture>
             </div>
         </section>
         
