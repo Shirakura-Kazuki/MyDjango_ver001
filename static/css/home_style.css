@@ -255,3 +255,38 @@ body {
     margin: 0;
     padding: 0;
 }
+
+h1{
+    text-align: center;
+    font-size: 100%;
+    margin: 20px 0;
+}
+.home-txt{
+    text-align: center;
+    font-size: 100%;
+    margin: 20px 0;
+}
+
+.heading06 {
+	position: relative;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 26px;
+	text-align: center;
+}
+
+.heading06 span {
+	position: relative;
+	z-index: 2;
+}
+
+.heading06::before {
+	content: attr(data-en);
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgba(224,66,114,0.2);
+	font-size: 80px;
+	font-style: italic;
+}

@@ -5,7 +5,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 {% endblock %}
 
-{% block title %}お知らせ - プロ野球ダメ助っ人博物館{% endblock %}
+{% block title %}プロ野球ダメ助っ人殿堂博物館からのお知らせ一覧{% endblock %}
+{% block meta_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ助っ人」「ダメ外国人」「ハズレ外国人」選手を集めたデータベース。エピソードや獲得背景、年棒や人柄などをまとめた殿堂博物館になっています。{% endblock %}
+
 
 {% block content %}
 <style>
@@ -103,7 +105,7 @@
 
 <!-- 📰 お知らせリスト -->
 <section class="news-list">
-    <h2>📢 お知らせ一覧</h2>
+    <h1>📢 プロ野球ダメ助っ人殿堂博物館からのお知らせ一覧</h1>
 
     {% for news in news_list %}
         <div class="news-card">

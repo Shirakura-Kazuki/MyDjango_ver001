@@ -8,8 +8,8 @@
 {% include 'customPage.html' %}
 
 
-{% block title %}プロ野球の歴代助っ人外国人ホーム | ダメ助っ人博物館{% endblock %}
-{% block meta_description %}プロ野球を彩る名外国人選手・助っ人外国人選手を紹介しています。中でも、期待外れ伝説のハズレダメ助っ人外国人選手を集めた殿堂博物館です{% endblock %}
+{% block title %}プロ野球ダメ助っ人博物館ホーム{% endblock %}
+{% block meta_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ助っ人」「ダメ外国人」「ハズレ外国人」選手を集めたデータベース。エピソードや獲得背景、年棒や人柄などをまとめた殿堂博物館になっています。{% endblock %}
 
 
 {% block content %}
@@ -28,7 +28,7 @@
             {% with url='question' image="images/t_job.png"  text="愛すべきダメ助っ人博物館とは？"  %}
             <div class="slide fade">
                 <a href="{% url url %}">
-                    <img src="{% static image %}" alt="スライド1">
+                    <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館スライド1">
                 </a>
                 <div class="slide-caption">
                     <h2>{{text}}</h2>
@@ -39,7 +39,7 @@
             {% with url='request' image="images/event_job.png"  text="第1回殿堂選手投票イベント開始"  %}
             <div class="slide fade">
                 <a href="{% url url %}">
-                    <img src="{% static image %}" alt="スライド2">
+                    <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館スライド2">
                 </a>
                 <div class="slide-caption">
                     <h2>{{text}}</h2>
@@ -50,7 +50,7 @@
              {% with url='player' image="images/player_job.png"  text="殿堂選手紹介"  %}
             <div class="slide fade">
                 <a href="{% url url %}">
-                    <img src="{% static image %}" alt="スライド3">
+                    <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館スライド3">
                 </a>
                 <div class="slide-caption">
                     <h2>{{text}}</h2>
@@ -75,11 +75,11 @@
 
         <section class="pick_up_section">
             <div class="pick_up_banner">
-                <h1 class="pick_up_text">PICK UP</h1>
+                <h2 class="pick_up_text">PICK UP</h2>
                 <p class="pick_up_subtext">ピックアップ</p>
             </div>
             <div class="pick_up_image">
-                <img src="{% static 'images/baseball_player.png' %}" alt="野球選手">
+                <img src="{% static 'images/baseball_player.png' %}" alt="2006年WBC日本代表監督とボブデービットソン風の男性">
             </div>
         </section>
         
@@ -91,7 +91,7 @@
             <!-- イベント情報1 -->
             {% with image="images/event_job.png" label="イベント" title="第1回殿堂選手投票イベント開始" date="2025年3月部門 投票開始" %}
             <div class="event-card">
-                <img src="{% static image %}" alt="イベント1">
+                <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館イベント1">
                 <div class="event-content">
                     <span class="event-label event">{{ label }}</span>
                     <h3>{{ title }}</h3>
@@ -103,7 +103,7 @@
             <!-- イベント情報2 -->
             {% with image="images/news_job.png" label="ニュース" title="ダメ助っ人博物館オープン！" date="2025年2月25日（火）～" %}
             <div class="event-card">
-                <img src="{% static image %}" alt="ニュース">
+                <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館ニュース">
                 <div class="event-content">
                     <span class="event-label exhibit">{{ label }}</span>
                     <h3>{{ title }}</h3>
@@ -116,7 +116,7 @@
             {% with image="images/player_job.png" label="殿堂" title="愛すべき助っ人殿堂入り発表" description="2014年楽天に入団したユーキリス選手が殿堂入り！" %}
             
             <div class="event-card">
-                <img src="{% static image %}" alt="殿堂">
+                <img src="{% static image %}" alt="日本プロ野球（NPB）の歴代ダメ助っ人博物館殿堂">
                 <div class="event-content">
                     <span class="event-label hall">{{ label }}</span>
                     <h3>{{ title }}</h3>
@@ -128,16 +128,18 @@
         </div>
     </section>
 
-    <h1>プロ野球 ダメ助っ人・クソ外国人 殿堂入りランキング</h1>
+    <h1>日本プロ野球（NPB）の歴代<br>「クソ助っ人」「ダメ外国人」「ハズレ外国人」<br>選手を集めたデータベース。<br>エピソードや獲得背景、年棒や人柄などを<br>まとめた殿堂博物館になっています。</h1>
+    <div class="home-txt">
+        <h2 class="heading06" data-en="question">💡 クソ助っ人とは？</h2>
+        <p>プロ野球で期待を裏切った助っ人外国人たち… その伝説を紹介！</p>
 
-    <h2>💡 クソ助っ人とは？</h2>
-    <p>プロ野球で期待を裏切った助っ人外国人たち… その伝説を紹介！</p>
+        <h2 class="heading06" data-en="ranking">🔥 歴代ワースト助っ人外国人ランキング</h2>
+        <p>あなたの記憶に残る最悪の助っ人は誰？</p>
 
-    <h2>🔥 歴代ワースト助っ人外国人ランキング</h2>
-    <p>あなたの記憶に残る最悪の助っ人は誰？</p>
-
-    <h2>🏆 伝説の「ネタ助っ人」ランキング</h2>
-    <p>プレーよりもキャラが強すぎる助っ人を紹介！</p>
+        <h2 class="heading06" data-en="Legend">🏆 伝説の「ネタ助っ人」ランキング</h2>
+        <p>プレーよりもキャラが強すぎる助っ人を紹介！</p>
+    </div>
+    
     
 {% endblock %}
 

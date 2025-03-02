@@ -1,14 +1,2537 @@
-ケビン・ユーキリス（フォアボールのギリシャ神）
-【アマチュア時代】
-大学時代には、53本塁打、206四球、出塁率.499などの大学記録を樹立し、その選球眼の良さから「フォアボールのギリシャ神」と称されました。
-【MLB時代】
-2001年のMLBドラフト8巡目でボストン・レッドソックスに指名され、2004年にメジャーデビューを果たします。デビュー戦では、2打席目に初本塁打を放ちましたが、チームメイトのペドロ・マルティネスのいたずらで祝福を無視されるという洗礼を受けました。しかし、これをきっかけにチームに溶け込み、2007年には一塁手として無失策の守備でゴールドグラブ賞を受賞し、ワールドシリーズ制覇に貢献しました。
-【NPB時代】
-2014年、東北楽天ゴールデンイーグルスに入団し、日本でのプレーを開始します。開幕2戦目となる3月29日の西武戦では、菊池雄星投手からNPB初本塁打を放ち、ファンを沸かせました。しかし、度重なる故障に悩まされ、4月26日の試合中に左かかとの痛みを訴え、翌日には出場選手登録を抹消されます。その後、左足底筋腱炎と診断され、5月7日にアメリカへ帰国。8月には、アイス・バケツ・チャレンジをする姿を動画サイトに投稿して「戦線離脱中に遊んでいる」と猛烈に批判される。結局、再び日本のグラウンドに立つことなく、同年10月30日に現役引退を表明しました。
+◆テンプレート（HTML）
+templates/ フォルダ内の base.html や各ページのHTML
+    ディレクトリ: C:\Users\s_k_t\Django\myDJ\helloApp\templates\helloApp
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        2025/02/28     15:26           8216 base.html
+-a----        2025/02/24      9:42           3470 direct.html
+-a----        2025/02/28     14:15           6299 home.html
+-a----        2025/02/24     12:08           3231 news.html
+-a----        2025/02/24     14:53           7323 player.html
+-a----        2025/02/28     14:16           8258 player_detail.html
+-a----        2025/02/26     16:59           4448 policy_1.html
+-a----        2025/02/26     16:59           3359 policy_2.html
+-a----        2025/02/25     14:04           5148 question.html
+-a----        2025/02/28     14:13           4717 request.html
 
-【獲得背景】
-楽天は2013年オフにケーシー・マギー（打率：.292/本塁打：28本/打点：93点）の退団に伴い、獲得された。なお、成績は（打率：.215/本塁打：1本/打点：11点）という成績であった。なお、出塁率は.342であるため、腐っても「四球の神」は健在であった。
-【年棒】
-2014年　3億円＋（出来高1億2000万円） 総額5億2000万円（500万ドル）
-【主な守備位置】
-一塁手、三塁手
+
+ーhelloApp\templates\helloApp\base.html
+<!DOCTYPE html>
+{% load static %}
+<html lang="ja">
+<head>
+    {% block meta_tags %}{% endblock %}
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7238695166888459"
+     crossorigin="anonymous"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWCWMBNQ9R"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CWCWMBNQ9R');
+    </script>
+
+    <!-- OGP (Open Graph Protocol) メタタグ （テスト実装）-->
+        <meta property="og:title" content="{% block og_title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人ランキング{% endblock %}">
+        <meta property="og:description" content="{% block og_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！爆笑エピソード＆ランキングあり！{% endblock %}">
+        <meta property="og:image" content="{% static 'images/og_image.png' %}">
+        <meta property="og:url" content="{{ request.build_absolute_uri }}">
+        <meta property="og:type" content="website">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="{% block twitter_title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人ランキング{% endblock %}">
+        <meta name="twitter:description" content="{% block twitter_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！{% endblock %}">
+        <!-- <meta name="twitter:image" content="{% static 'images/og_image.png' %}"> -->
+        <meta name="twitter:image" content="https://baseball-love-helper-museum.onrender.com/static/images/og_image.png">
+        <meta name="twitter:site" content="@official_Chawai">
+        <meta name="twitter:creator" content="@official_Chawai">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}プロ野球ダメ助っ人博物館 | クソ助っ人・ダメ外国人伝説の助っ人選手殿堂おもしろエピソード334選ランキング{% endblock %}</title>
+    <meta name="description" content="{% block meta_description %}日本プロ野球（NPB）の歴代「クソ助っ人」「ダメ外国人」「ハズレ外国人」選手を紹介！爆笑エピソード＆ランキングあり！{% endblock %}">
+
+    <link rel="icon" href="{% static 'images/logimg_main.png' %}">
+    <link rel="stylesheet" href="{% static 'css/base_style.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- ヘッダー -->
+    <header>
+        <div class="logo">
+            <img src="{% static 'images/logimg_main.png' %}" alt="博物館ロゴ">
+        </div>
+        <button class="menu-toggle" aria-label="ナビゲーションを開く">☰ＭＥＮＵ</button>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const menuToggle = document.querySelector(".menu-toggle");
+                const navMenu = document.querySelector(".nav-menu ul");
+
+                menuToggle.addEventListener("click", function () {
+                    navMenu.classList.toggle("show");
+                });
+            });
+        </script>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="{% url 'home' %}"> Home </a></li>
+                <li class="main_title"><a href="{% url 'player' %}"> 殿堂選手紹介 </a></li>
+                <li><a href="{% url 'request' %}"> 投票リクエスト </a></li>
+                <li><a href="{% url 'news' %}"> お知らせ </a></li>
+                <li><a href="{% url 'direct' %}"> お問い合わせ </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ページごとのコンテンツを表示 -->
+    <main>
+        {% block content %}
+        <!-- 各ページ固有の内容がここに挿入されます -->
+        {% endblock %}
+    </main>
+
+    <div class="ScrollTopBtn(link.css)">      
+        <!--  スクロールトップボタン -->
+        <button id="scrollTopBtn" class="scroll-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+    
+        <style>
+        /* 🔹 スクロールトップボタンのデザイン */
+        .scroll-top {
+            position: fixed;
+            bottom: 10vh;
+            right: 5vw;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* 初期状態では非表示 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+    
+        /* 🔹 アイコンサイズを適切に調整 */
+        .scroll-top i {
+            font-size: 20px; /* 🔹 アイコンが大きすぎるので適切なサイズに */
+        }
+    
+        /* 🔹 ホバー時の効果 */
+        .scroll-top:hover {
+            background: rgba(0, 0, 0, 0.7); /* 🔹 ホバー時に少し濃くする */
+            transform: scale(1.1);
+        }
+    
+        /* 🔹 ボタンが表示される条件 */
+        .show {
+            display: flex;  /* 🔥 ここで適用 */
+            justify-content: center;
+            align-items: center;
+        }
+        </style>
+    
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let scrollTopBtn = document.getElementById("scrollTopBtn");
+    
+            // 🔹 スクロールしたらボタンを表示
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+                } else {
+                    scrollTopBtn.classList.remove("show");
+                }
+            });
+    
+            // 🔹 クリックでページトップにスムーズに戻る
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // スムーズスクロール
+                });
+            });
+        });
+        </script>
+    </div>
+
+
+    <div class="twitter-share">
+        <a href="https://twitter.com/intent/tweet?text=【爆笑】歴代ダメ助っ人外国人選手！&url={{ request.build_absolute_uri }}&via=official_Chawai&hashtags=プロ野球,ダメ助っ人,クソ助っ人" 
+           target="_blank" rel="noopener noreferrer">
+            <i class="fa-brands fa-twitter"></i> シェアする
+        </a>
+    </div>
+    
+    <style>
+    .twitter-share {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    
+    .twitter-share a {
+        display: inline-block;
+        background-color: #1DA1F2;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+    
+    .twitter-share a:hover {
+        background-color: #0d8be6;
+    }
+    
+    .twitter-share i {
+        margin-right: 8px;
+    }
+    </style>
+    
+
+
+    <!-- フッター -->
+    <footer>
+        <ul>
+            <li><a href="{% url 'direct' %}">ご意見・ご要望</a></li>
+            <li><a href="{% url 'policy_1' %}">サイトポリシー</a></li>
+            <li><a href="{% url 'policy_2' %}">プライバシーポリシー</a></li>
+        </ul>
+        <p>Copyright © ダメ助っ人博物館 ～愛すべき助っ人たち～</p>
+    </footer>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
+
+
+ーhelloApp\templates\helloApp\direct.html
+{% extends 'helloApp/base.html' %}
+
+{% block title %}お問い合わせフォーム - プロ野球ダメ助っ人博物館{% endblock %}
+
+{% block content %}
+<style>
+    /* 🌟 ページ全体のスタイル */
+    body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        background: #eeeeee;  
+        color: #333;
+        margin: 0;
+        padding: 0;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* 🎯 タイトルデザイン */
+    h1 {
+        font-size: 32px;
+        font-weight: bold;
+        margin-top: 50px;
+        animation: float 2s ease-in-out infinite alternate;
+    }
+
+    /* 🎭 フォームコンテナ（問い合わせの枠） */
+    .form-container {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+        max-width: 500px;
+        margin: auto;
+        margin-top: 30px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        animation: fadeInUp 1s ease-in-out;
+    }
+
+    /* ✨ ホバー時の浮き上がりエフェクト */
+    .form-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🚀 フォームの説明文 */
+    .form-container p {
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #555;
+    }
+
+    /* 🌟 お問い合わせボタン */
+    .form-button {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #007BFF, #0056b3);
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* 🌟 ボタンの光るエフェクト */
+    .form-button::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 10%, transparent 40%);
+        transition: opacity 0.6s ease-in-out;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
+
+    .form-button:hover::after {
+        opacity: 1;
+    }
+
+    /* ✨ ボタンのホバーアニメーション */
+    .form-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 🎭 アニメーション */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+        from { transform: translateY(0px); }
+        to { transform: translateY(10px); }
+    }
+</style>
+
+<!-- 🔥 お問い合わせフォーム -->
+<h1>📢 お問い合わせはこちら！</h1>
+<div class="form-container">
+    <p>💡 ご質問・リクエストは、Googleフォームで受付中！</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMq3ynyL0gzSijwElpTbxsrGLiz3PzKXvDKgJM_7JzePY6wQ/viewform?usp=dialog"
+       class="form-button" target="_blank">🚀 Googleフォームへ</a>
+</div>
+
+{% endblock %}
+
+
+ーhelloApp\templates\helloApp\home.html
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/home_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+{% include 'customPage.html' %}
+
+
+{% block title %}プロ野球の歴代助っ人外国人ホーム | ダメ助っ人博物館{% endblock %}
+{% block meta_description %}プロ野球を彩る名外国人選手・助っ人外国人選手を紹介しています。中でも、期待外れ伝説のハズレダメ助っ人外国人選手を集めた殿堂博物館です{% endblock %}
+
+
+{% block content %}
+    <!-- 重要なお知らせ(モック：next（<p>にはデータベースに入っている最新のニュースを更新出来るようにする）) -->
+        <section class="news-alert">
+            {% if latest_news %}
+                <p><strong>重要なお知らせ</strong><br> {{ latest_news.date }} {{ latest_news.title }}</p>
+            {% else %}
+                <p><strong>重要なお知らせ</strong><br> 現在、お知らせはありません。</p>
+            {% endif %}
+        </section>
+    
+        <!-- メインスライドショー -->
+        <section class="slideshow">
+            <!-- スライド1: -->
+            {% with url='question' image="images/t_job.png"  text="愛すべきダメ助っ人博物館とは？"  %}
+            <div class="slide fade">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド1">
+                </a>
+                <div class="slide-caption">
+                    <h2>{{text}}</h2>
+                </div>
+            </div>
+            {% endwith %}
+            <!-- スライド2: -->
+            {% with url='request' image="images/event_job.png"  text="第1回殿堂選手投票イベント開始"  %}
+            <div class="slide fade">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド2">
+                </a>
+                <div class="slide-caption">
+                    <h2>{{text}}</h2>
+                </div>
+            </div>
+            {% endwith %}
+            <!-- スライド3: -->
+             {% with url='player' image="images/player_job.png"  text="殿堂選手紹介"  %}
+            <div class="slide fade">
+                <a href="{% url url %}">
+                    <img src="{% static image %}" alt="スライド3">
+                </a>
+                <div class="slide-caption">
+                    <h2>{{text}}</h2>
+                </div>
+            </div>
+            {% endwith %}
+    
+            <!-- スライドナビゲーションボタン -->
+            <button class="prev" onclick="prevSlide()">&#10094;</button>
+            <button class="next" onclick="nextSlide()">&#10095;</button>
+    
+            <!-- ページングインジケーター -->
+            <div class="dots-container">
+                <span class="dot" onclick="setSlide(0)"></span>
+                <span class="dot" onclick="setSlide(1)"></span>
+                <span class="dot" onclick="setSlide(2)"></span>
+            </div>
+    
+        </section>
+    
+        <script src="{% static 'js/slideshow.js' %}" defer></script>
+
+        <section class="pick_up_section">
+            <div class="pick_up_banner">
+                <h1 class="pick_up_text">PICK UP</h1>
+                <p class="pick_up_subtext">ピックアップ</p>
+            </div>
+            <div class="pick_up_image">
+                <img src="{% static 'images/baseball_player.png' %}" alt="野球選手">
+            </div>
+        </section>
+        
+
+         <!-- イベントセクション -->
+    <section class="event-section">
+        <div class="event-container">
+            
+            <!-- イベント情報1 -->
+            {% with image="images/event_job.png" label="イベント" title="第1回殿堂選手投票イベント開始" date="2025年3月部門 投票開始" %}
+            <div class="event-card">
+                <img src="{% static image %}" alt="イベント1">
+                <div class="event-content">
+                    <span class="event-label event">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ date }}</p>
+                </div>
+            </div>
+            {% endwith %}
+
+            <!-- イベント情報2 -->
+            {% with image="images/news_job.png" label="ニュース" title="ダメ助っ人博物館オープン！" date="2025年2月25日（火）～" %}
+            <div class="event-card">
+                <img src="{% static image %}" alt="ニュース">
+                <div class="event-content">
+                    <span class="event-label exhibit">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ date }}</p>
+                </div>
+            </div>
+            {% endwith %}
+
+            <!-- イベント情報3 -->
+            {% with image="images/player_job.png" label="殿堂" title="愛すべき助っ人殿堂入り発表" description="2014年楽天に入団したユーキリス選手が殿堂入り！" %}
+            
+            <div class="event-card">
+                <img src="{% static image %}" alt="殿堂">
+                <div class="event-content">
+                    <span class="event-label hall">{{ label }}</span>
+                    <h3>{{ title }}</h3>
+                    <p>{{ description }}</p>
+                </div>
+            </div>
+            {% endwith %}
+
+        </div>
+    </section>
+
+    <h1>プロ野球 ダメ助っ人・クソ外国人 殿堂入りランキング</h1>
+
+    <h2>💡 クソ助っ人とは？</h2>
+    <p>プロ野球で期待を裏切った助っ人外国人たち… その伝説を紹介！</p>
+
+    <h2>🔥 歴代ワースト助っ人外国人ランキング</h2>
+    <p>あなたの記憶に残る最悪の助っ人は誰？</p>
+
+    <h2>🏆 伝説の「ネタ助っ人」ランキング</h2>
+    <p>プレーよりもキャラが強すぎる助っ人を紹介！</p>
+    
+{% endblock %}
+
+
+ーhelloApp\templates\helloApp\news.html
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block title %}お知らせ - プロ野球ダメ助っ人博物館{% endblock %}
+
+{% block content %}
+<style>
+    /* 🌟 ページ全体 */
+    body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #fffbda, #ffcf6d);
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* 🎯 重要なお知らせ（固定表示） */
+    .news-alert {
+        background: #FF5733;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    /* 📰 お知らせリスト */
+    .news-list {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 10px;
+    }
+
+    .news-list h2 {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #444;
+    }
+
+    /* 🏆 各お知らせカード */
+    .news-card {
+        background: white;
+        padding: 15px;
+        margin: 10px 0;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        cursor: pointer;
+    }
+
+    .news-card:hover {
+        transform: scale(1.02);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    /* 📅 日付のスタイル */
+    .news-date {
+        font-size: 14px;
+        color: #666;
+    }
+
+    /* 📢 タイトルのスタイル */
+    .news-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 5px 0;
+        color: #FF5733;
+    }
+
+    /* 📝 内容のスタイル */
+    .news-content {
+        font-size: 14px;
+        color: #444;
+    }
+
+    /* 🎭 アニメーション */
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+</style>
+
+<!-- 🚀 重要なお知らせ -->
+<section class="news-alert">
+    {% if latest_news %}
+        <p>⚠️ <strong>最新のお知らせ</strong><br>  
+            {{ latest_news.date }} - {{ latest_news.title }} <br>
+            {{ latest_news.content }}
+        </p>
+    {% else %}
+        <p>⚠️ <strong>重要なお知らせ</strong><br> 現在、お知らせはありません。</p>
+    {% endif %}
+</section>
+
+<!-- 📰 お知らせリスト -->
+<section class="news-list">
+    <h2>📢 お知らせ一覧</h2>
+
+    {% for news in news_list %}
+        <div class="news-card">
+            <div class="news-date">📅 {{ news.date }}</div>
+            <div class="news-title">{{ news.title }}</div>
+            <div class="news-content">{{ news.content }}</div>
+        </div>
+    {% empty %}
+        <p style="text-align:center;">現在、お知らせはありません。</p>
+    {% endfor %}
+</section>
+
+{% endblock %}
+
+
+ーhelloApp\templates\helloApp\player_detail.html
+{% extends 'helloApp/base.html'%}
+{% load static %}
+{% block meta_tags %}
+     <!-- ✅ メタディスクリプションに日本語の名前を含める -->
+     <meta name="description" content="{{ player.name }}の詳細情報を紹介します。">
+     <!-- ✅ canonicalタグで「yamada-taro」を正規URLとして指定 -->
+     <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'player_detail' slug=player.slug %}">
+{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block title %}{{ player.name }} {{ player.slug}} - 詳細ページ{% endblock %}
+
+{% block content %}    
+    <body>
+            <style>
+                    body {
+                        font-family: 'Arial', sans-serif;
+                        margin: 0;
+                        padding: 0;
+                        background-color: #f8f8f8;
+                        user-select: none; /* テキスト選択を禁止 */
+                        -webkit-user-select: none; /* Safari対応 */
+                        -moz-user-select: none; /* Firefox対応 */
+                        -ms-user-select: none; /* IE対応 */
+                    }
+
+                    main {
+                        padding: 20px;
+                        max-width: 1200px;
+                        margin: auto;
+                        background-color: white;
+                        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                    }
+                    
+                    h1 {
+                        font-size: 28px;
+                        color: #333;
+                    }
+
+                    .player-info {
+                        display: flex;
+                        justify-content: center;
+                        align-self: center;
+                        gap: 20px;
+                        margin-bottom: 20px;
+                    }
+
+                    .player-info img {
+                        width: 55%;
+                        height: auto;
+                        border-radius: 10px;
+                        border: 2px solid #ccc;
+                    }
+
+                    table {
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin-bottom: 20px;
+                        max-width: 1100px; /* ✅ 必要なら最大幅を設定 */
+                    }
+
+                    th, td {
+                        border: 1px solid #ddd;
+                        padding: 10px;
+                        text-align: left;
+                    }
+
+                    th {
+                        background-color: #f2f2f2;
+                        width: 20%;
+                    }
+
+                    /* td {
+                        word-wrap: break-word;
+                        white-space: normal; 
+                    } */
+                    
+
+                    td a {
+                        color: #00471b;
+                        text-decoration: none;
+                        font-weight: bold;
+                    }
+
+                    .breadcrumb {
+                        list-style: none;
+                        padding: 10px 0;
+                        margin: 0;
+                        display: flex;
+                        font-size: 14px;
+                    }
+
+                    .breadcrumb li {
+                        display: inline;
+                    }
+
+                    .breadcrumb li:not(:last-child)::after {
+                        content: " > ";  /* 区切り記号を追加 */
+                        margin: 0 5px;
+                        color: #666;
+                    }
+
+                    .breadcrumb a {
+                        text-decoration: none;
+                        color: #00471b;
+                        font-weight: bold;
+                    }
+
+                    .breadcrumb a:hover {
+                        text-decoration: underline;
+                    }
+
+                    /* スマホ表示用（幅768px以下の画面サイズ） */
+                    @media screen and (max-width: 768px) {
+                        .player-info img {
+                            width: 80%; /* スマホのときは画像をページ幅の75%に拡大 */
+                        }
+                    }
+            </style>
+
+        <nav class="aa" aria-label="breadcrumb">
+            <ul class="breadcrumb">
+                <li><a href="{% url 'home' %}">HOME</a></li>
+                <li><a href="{% url 'player' %}">殿堂入りリスト</a></li>
+                <li>{{ player.name }}</li> <!-- 現在のページ（リンクなし） -->
+            </ul>
+        </nav>
+
+        <main>
+            <!-- 名前（スラッグ（ローマ字表記文）） -->
+            <h1>{{ player.name }} ({{ player.slug}})</h1>
+            <!-- 選手画像 -->
+            <div class="player-info">
+                {% if player.profile_image %}
+                    <img src="{{ player.profile_image.url }}" alt="{{ player.name }}" width="200">
+                {% else %}
+                    <img src="{% static 'images/default.png' %}" alt="No Image" width="200">
+                {% endif %}
+            </div>
+
+            <table>
+                <tr>
+                    <th>選手紹介</th>
+                    <td>{{ player.long_profile|linebreaksbr }}</td>
+                </tr>
+                <tr>
+                    <th>表彰年 / 区分</th>
+                    <td><p><strong>殿堂入り年:</strong> {{ player.year }}  /  <strong>カテゴリ:</strong> {{ player.category }}</p></td>
+                </tr>
+                <tr>
+                    <th>生年月日</th>
+                    <td>{{ player.date }}</td>
+                </tr>
+                <tr>
+                    <th>出身地</th>
+                    <td>{{ player.place }}</td>
+                </tr>
+                <tr>
+                    <th>出身校</th>
+                    <td>{{ player.school }}</td>
+                </tr>
+                <tr>
+                    <th>所属チーム</th>
+                    <td>{{ player.team_history|linebreaksbr }}</td>
+                </tr>
+                <tr>
+                    <th>投打 / ポジション</th>
+                    <td>{{ player.p_and_h }} / {{ player.position }}</td>
+                </tr>
+                <tr>
+                    <th>通算成績</th>
+                    <td>{{ player.total_record|linebreaksbr }}</td>
+                </tr>
+                <tr>
+                    <th>公式記録</th>
+                    <td><a href="{{ player.link }}" target="_blank" rel="noopener noreferrer">公式成績サイト</a>(npb.jp参照)</td>
+                    </tr>
+                <tr>
+                    <th>タイトル</th>
+                    <td>{{ player.title|linebreaksbr }}</td>
+                </tr>
+                <tr>
+                    <th>表彰</th>
+                    <td>{{ player.award|linebreaksbr }}</td>
+                </tr>
+            </table>
+        </main>
+
+
+        <h1>{{ player.name }} - 伝説のクソ助っ人外国人</h1>
+
+    <p>この選手の他のエピソードもチェック！</p>
+    <ul>
+        <li><a href="{% url 'player' %}">歴代の殿堂ダメ助っ人ランキングを見る</a></li>
+        <li><a href="{% url 'request' %}">次の投票イベントに参加する</a></li>
+    </ul>
+
+    </body>
+
+    <script>
+        document.addEventListener('contextmenu', function(event) {
+            event.preventDefault(); // 右クリックメニューを無効化
+        });
+        
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && (event.key === 'c' || event.key === 'x' || event.key === 'u' || event.key === 'p')) {
+                event.preventDefault(); // Ctrl+C, Ctrl+X, Ctrl+U, Ctrl+P（コピー・切り取り・ページソース表示・印刷）を無効化
+            }
+        });
+    </script>        
+{% endblock %}
+
+ーhelloApp\templates\helloApp\player.html
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/p_style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block title %}殿堂選手紹介 - プロ野球ダメ助っ人博物館{% endblock %}
+
+{% block content %}
+    <!-- ヘッダー -->
+    <header class="header">
+        <h1>殿堂選手紹介</h1>
+    </header>
+    
+    <!-- 🔹 検索フォーム & フィルターボタン -->
+    <section class="search-filter-container">
+        <input type="text" id="searchInput" class="search-box" placeholder="名前を入力">
+        <button id="filterToggle" class="filter-btn">
+            <i class="fa-solid fa-filter"></i> 検索フィルター</button>
+    </section>
+
+<!-- 🔹 フィルターメニュー -->
+<div id="filterMenu" class="filter-menu">
+    <div class="filter-content">
+        <button id="closeFilter" class="close-btn">×</button>
+        <h2>検索フィルター</h2>
+        <ul>
+            <li><a href="?category=">全員表示</a></li>
+            <li><a href="?category=選手">選手</a></li>
+            <li><a href="?category=その他">その他</a></li>
+            <li class="dropdown">
+                <span>所属チーム ▼</span>
+                <ul class="dropdown-content">
+                    <a href="?team=読売ジャイアンツ">読売ジャイアンツ</a>
+                    <a href="?team=阪神タイガース">阪神タイガース</a>
+                    <a href="?team=中日ドラゴンズ">中日ドラゴンズ</a>
+                    <a href="?team=横浜DeNAベイスターズ">横浜DeNAベイスターズ</a>
+                    <a href="?team=広島東洋カープ">広島東洋カープ</a>
+                    <a href="?team=東京ヤクルトスワローズ">東京ヤクルトスワローズ</a>
+                    <a href="?team=オリックス・バファローズ">オリックス・バファローズ</a>
+                    <a href="?team=福岡ソフトバンクホークス">福岡ソフトバンクホークス</a>
+                    <a href="?team=北海道日本ハムファイターズ">北海道日本ハムファイターズ</a>
+                    <a href="?team=千葉ロッテマリーンズ">千葉ロッテマリーンズ</a>
+                    <a href="?team=埼玉西武ライオンズ">埼玉西武ライオンズ</a>
+                    <a href="?team=東北楽天ゴールデンイーグルス">東北楽天ゴールデンイーグルス</a>
+                    <a href="?team=大阪近鉄バファローズ">大阪近鉄バファローズ</a>
+                    <a href="?team=その他">その他</a>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
+
+    <!-- 殿堂入りリスト（テーブル） -->
+    <section class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>氏名</th>
+                    <th>殿堂入り年</th>
+                    <th>カテゴリ</th>
+                    <th>所属チーム</th>
+                    <th>ショートプロフィール</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in page_obj %}
+                <tr>
+                    <td>{{ player.id }}</td>
+                    <td class="p_name">
+                    {% if player.slug %}
+                        <a href="{% url 'player_detail' player.slug %}">{{ player.name }}</a>
+                    {% else %}
+                        {{ player.name }}  <!-- スラッグが無い場合はリンクなし -->
+                    {% endif %}
+                    </td>
+                    <td>{{ player.year }}</td>
+                    <td>{{ player.category }}</td>
+                    <td>{{ player.team }}</td>
+                    <td>{{ player.profile }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </section>
+
+    <!-- ページネーション -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">« 最初</a>
+            <a href="?page={{ page_obj.previous_page_number }}">‹ 前</a>
+        {% endif %}
+
+        <span>ページ {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">次 ›</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">最後 »</a>
+        {% endif %}
+    </div>
+
+    <div class="ScrollTopBtn(link.css)">      
+        <!--  スクロールトップボタン -->
+        <button id="scrollTopBtn" class="scroll-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <style>
+        /* 🔹 スクロールトップボタンのデザイン */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 20%;
+            cursor: pointer;
+            display: none; /* 初期状態では非表示 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+
+             /* 🔹 アイコンを中央配置 */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 🔹 アイコンサイズを適切に調整 */
+        .scroll-top i {
+            font-size: 20px; /* 🔹 アイコンが大きすぎるので適切なサイズに */
+        }
+
+        /* 🔹 ホバー時の効果 */
+        .scroll-top:hover {
+            background: rgba(0, 0, 0, 0.7); /* 🔹 ホバー時に少し濃くする */
+            transform: scale(1.1);
+        }
+
+        /* 🔹 ボタンが表示される条件 */
+        .show {
+            display: block;
+        }
+        </style>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            // 🔹 スクロールしたらボタンを表示
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+                } else {
+                    scrollTopBtn.classList.remove("show");
+                }
+            });
+
+            // 🔹 クリックでページトップにスムーズに戻る
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // スムーズスクロール
+                });
+            });
+        });
+        </script>
+    </div>
+
+    {% endblock %}
+
+    {% block extra_js %}
+        <script src="{% static 'js/p_script.js' %}"></script>
+    {% endblock %}
+
+
+ーhelloApp\templates\helloApp\policy_1.html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWCWMBNQ9R"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CWCWMBNQ9R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>サイトポリシー | ダメ助っ人博物館</title>
+    <style>
+        body {
+            font-family: "Yu Gothic", sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 24px;
+            border-bottom: 3px solid #333;
+            padding-bottom: 5px;
+        }
+        h2 {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 12px;
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>サイトポリシー</h1>
+        <p>本ウェブサイト「<strong>ダメ助っ人博物館 ～愛すべき助っ人たち～</strong>」（以下「当サイト」）は、以下のポリシーに基づいて運営されています。</p>
+
+        <h2>1. 運営者情報</h2>
+        <p>運営者：バンバン茶和井（<a href="https://x.com/official_Chawai" target="_blank">公式X（旧Twitter）</a>）</p>
+        <p>お問い合わせは、<a href="https://x.com/official_Chawai" target="_blank">公式X</a>または、お問い合わせフォームをご利用ください。</p>
+
+        <h2>2. コンテンツの利用について</h2>
+        <p>当サイトに掲載されている記事や画像は、<strong>出典を明記した上で引用</strong>することが可能です。ただし、無断転載や二次配布はご遠慮ください。</p>
+        <p>また、スクリーンショットやSNSでの共有は歓迎いたしますが、改変・誤解を招く編集を行わないようお願いいたします。</p>
+
+        <h2>3. 免責事項</h2>
+        <p>当サイトの情報は正確性を心がけておりますが、誤情報が含まれる可能性があります。内容に関する最終判断は閲覧者ご自身でお願いいたします。</p>
+        <p>また、当サイトからリンクされている外部サイトの情報については一切責任を負いません。</p>
+        <p>当サイトは予告なく内容の変更や運営の停止を行うことがあります。あらかじめご了承ください。</p>
+
+        <h2>4. 禁止行為</h2>
+        <p>当サイトの利用に際し、以下の行為を禁止します。</p>
+        <ul>
+            <li>誹謗中傷・荒らし行為</li>
+            <li>法律に違反する行為</li>
+            <li>スパム行為（問い合わせフォームの悪用など）</li>
+        </ul>
+
+        <h2>5. リンクポリシー</h2>
+        <p>当サイトへのリンクは自由に行っていただいて構いません。ただし、以下のようなサイトからのリンクはお断りします。</p>
+        <ul>
+            <li>違法コンテンツを含むサイト</li>
+            <li>公序良俗に反するサイト</li>
+        </ul>
+        <p>相互リンクについては、個別にお問い合わせください。</p>
+
+        <h2>6. サイトポリシーの改訂</h2>
+        <p>当サイトのポリシーは必要に応じて改訂される場合があります。変更がある場合は、当サイト上で告知いたします。</p>
+
+        <div class="footer">
+            <p>最終更新日：2025年2月</p>
+            <p>&copy; ダメ助っ人博物館</p>
+        </div>
+
+        <!-- HOMEへ戻るボタン -->
+        <p style="text-align: center; margin-top: 20px;"><a href="{% url 'home' %}">HOMEへ戻る</a></p>
+    </div>
+</body>
+</html>
+
+ーhelloApp\templates\helloApp\policy_2.html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CWCWMBNQ9R"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-CWCWMBNQ9R');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プライバシーポリシー | ダメ助っ人博物館</title>
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+        h1 {
+            text-align: center;
+            color: #222;
+        }
+        h2 {
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 5px;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>プライバシーポリシー</h1>
+        <p>本プライバシーポリシーは、「ダメ助っ人博物館 ～愛すべき助っ人たち～」（以下「当サイト」といいます）の運営に際し、ユーザーの個人情報の取り扱いについて定めるものです。</p>
+        
+        <h2>1. 個人情報の取得と利用目的</h2>
+        <p>当サイトでは、以下の目的のために個人情報を取得し、利用することがあります。</p>
+        <ul>
+            <li>お問い合わせへの対応</li>
+            <li>サイトの利便性向上</li>
+            <li>不正・違法行為の防止</li>
+        </ul>
+        
+        <h2>2. 個人情報の第三者提供</h2>
+        <p>当サイトでは、法令に基づく場合を除き、ユーザーの同意なく個人情報を第三者に提供することはありません。</p>
+        
+        <h2>3. アクセス解析ツールについて</h2>
+        <p>当サイトでは、Googleアナリティクスを使用して訪問者のアクセス解析を行っています。Cookieを通じて収集されたデータは匿名であり、個人を特定するものではありません。</p>
+        
+        <h2>4. Cookie（クッキー）について</h2>
+        <p>当サイトでは、利便性向上のためにCookieを使用することがあります。ブラウザの設定により、Cookieの無効化が可能です。</p>
+        
+        <h2>5. プライバシーポリシーの変更</h2>
+        <p>本プライバシーポリシーの内容は、必要に応じて変更されることがあります。変更後の内容は、当ページにて速やかに公表します。</p>
+        
+        <p>最終更新日: 2025年2月23日</p>
+        <!-- HOMEへ戻るボタン -->
+        <p style="text-align: center; margin-top: 20px;"><a href="{% url 'home' %}">HOMEへ戻る</a></p>
+    </div>
+</body>
+</html>
+
+ーhelloApp\templates\helloApp\question.html
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/about_style.css' %}">
+{% endblock %}
+
+{% block title %}愛すべきダメ助っ人博物館 - その魅力と哲学{% endblock %}
+
+{% block content %}
+    <style>
+        /* Apple風のシンプルかつ洗練されたデザイン */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1c1c1c, #111);
+            text-align: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .about-container, .philosophy-container, .features-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .features-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            width: 30%;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .cta {
+            text-align: center;
+            margin: 50px 0;
+            padding: 20px;
+            background: #222;
+        }
+
+        .cta h2 {
+            font-size: 28px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #ffcc00;
+            color: #000;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #ffaa00;
+        }
+
+    </style>
+
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>愛すべきダメ助っ人博物館</h1>
+            <p>〜 歴史が証明する、助っ人たちの挑戦 〜</p>
+        </div>
+    </section>
+
+    <section class="about-intro">
+        <div class="about-container">
+            <h2>「ダメ助っ人」ではない、<br>「愛すべき助っ人」たちの記録</h2>
+            <p>
+                プロ野球の歴史には、多くの助っ人外国人選手が名を連ねました。  
+                彼らは「救世主」として期待され、時には「ダメ助っ人」と揶揄されながらも、日本の野球に情熱を捧げました。  
+                本サイトは、そんな彼らの「戦い」と「魅力」をアーカイブし、再評価する場です。
+            </p>
+        </div>
+    </section>
+
+    <section class="philosophy">
+        <div class="philosophy-container">
+            <h2>哲学 & ミッション</h2>
+            <p>
+                **歴史は勝者のものだけではない。**  
+                我々は、結果だけでは語り尽くせない「挑戦の価値」を見つめます。  
+                彼らの存在は、成功の陰にある「失敗」の美学を教えてくれます。
+            </p>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-container">
+            <div class="feature-item">
+                <h3>🔎 記録とデータ</h3>
+                <p>選手の成績、インタビュー、歴史的背景を分析し、詳細なデータベースを構築。</p>
+            </div>
+            <div class="feature-item">
+                <h3>📖 ストーリー</h3>
+                <p>助っ人たちの栄光と挫折、その裏側にあるドラマを深掘り。</p>
+            </div>
+            <div class="feature-item">
+                <h3>🌏 グローバルな視点</h3>
+                <p>海外リーグとの比較、日本独自の助っ人文化の変遷を探る。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>「勝者」ではなく、「挑戦者」にスポットライトを。</h2>
+        <p>あなたの記憶に残る助っ人は誰ですか？</p>
+        <a href="{% url 'player' %}" class="cta-button">選手リストを見る</a>
+    </section>
+
+{% endblock %}
+
+ーhelloApp\templates\helloApp\request.html
+{% extends 'helloApp/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+{% endblock %}
+
+{% block title %}投票リクエスト - プロ野球ダメ助っ人博物館{% endblock %}
+
+{% block content %}
+    <h1>投票リクエスト</h1>
+    <style>
+        /* 全体の設定 */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #222;
+            color: white;
+            overflow: hidden;
+        }
+
+        /* 中央のコンテナ */
+        .container {
+            position: relative;
+            top: 30%;
+        }
+
+        /* 震えるテキスト */
+        .shaky-text {
+            font-size: 48px;
+            font-weight: bold;
+            display: inline-block;
+            animation: shake 0.3s infinite alternate;
+            color: yellow;
+            text-shadow: 2px 2px 10px rgba(255, 255, 0, 0.8);
+        }
+
+        @keyframes shake {
+            from { transform: translateX(-2px) rotate(-1deg); }
+            to { transform: translateX(2px) rotate(1deg); }
+        }
+
+        /* 無駄に光る工事マーク */
+        .blinking {
+            font-size: 24px;
+            margin-top: 20px;
+            display: inline-block;
+            animation: blink 0.8s infinite alternate;
+            color: orange;
+        }
+
+        @keyframes blink {
+            from { opacity: 0.3; }
+            to { opacity: 1; }
+        }
+
+        /* 無駄に浮遊する顔アイコン */
+        .floating {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            top: 50%;  /* 上から50% */
+            left: 50%; /* 左から50% */
+            transform: translate(-50%, -50%); /* ど真ん中に調整 */
+            animation: floaty 3s infinite alternate ease-in-out;
+        }
+
+        @keyframes floaty {
+            from { transform: translateX(-50%) translateY(10px) rotate(0deg); }
+            to { transform: translateX(-50%) translateY(-10px) rotate(5deg); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="shaky-text">COMING SOON...</div><br>
+        <div class="blinking">💡 現在開発中！しばらくお待ちください 💡</div>
+    </div>
+
+    <!-- 無駄にフワフワ動く顔アイコン -->
+    <img src="{% static 'images/logimg_main.png' %}" class="floating" alt="謎の顔">
+
+    <div class="ScrollTopBtn(link.css)">      
+        <!--  スクロールトップボタン -->
+        <button id="scrollTopBtn" class="scroll-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </button>
+
+        <style>
+        /* 🔹 スクロールトップボタンのデザイン */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background: rgba(0, 0, 0, 0.5); /* 🔹 少し透かす */
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 20%;
+            cursor: pointer;
+            display: none; /* 初期状態では非表示 */
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* 🔹 ホバー時の効果 */
+        .scroll-top:hover {
+            background: rgba(0, 0, 0, 0.7); /* 🔹 ホバー時に少し濃くする */
+            transform: scale(1.1);
+        }
+
+        /* 🔹 ボタンが表示される条件 */
+        .show {
+            display: block;
+        }
+        </style>
+
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let scrollTopBtn = document.getElementById("scrollTopBtn");
+
+            // 🔹 スクロールしたらボタンを表示
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    scrollTopBtn.classList.add("show"); // 300px以上スクロールで表示
+                } else {
+                    scrollTopBtn.classList.remove("show");
+                }
+            });
+
+            // 🔹 クリックでページトップにスムーズに戻る
+            scrollTopBtn.addEventListener("click", function () {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth" // スムーズスクロール
+                });
+            });
+        });
+        </script>
+    </div>
+
+</body>
+{% endblock %}
+
+
+
+◆ビュー（views.py）
+どのようにデータを取得・表示しているか
+helloApp\views.py
+from django.shortcuts import render , redirect ,get_object_or_404
+from django.core.paginator import Paginator
+import os , json
+from .models import Player
+from django.conf import settings
+from django.views import View
+from django.http import HttpResponse
+
+
+# ニュースページ：ニュースの一覧を表示
+def news(request):
+    # news.json のパス
+    json_path = os.path.join(settings.BASE_DIR, "news.json")
+
+    # JSONファイルを読み込む
+    try:
+        with open(json_path, "r", encoding="utf-8") as file:
+            news_list = json.load(file)
+            print( "OKリスト" , news_list)
+    except Exception as e:
+            print("JSON読み込みエラー:", e)
+            news_list = []  # エラー時は空リストにする
+
+    latest_news = news_list[0] if news_list else None  # 最新のお知らせを取得
+
+    return render(request, 'helloApp/news.html' , {"news_list": news_list, "latest_news": latest_news})  # news.htmlを表示
+
+# ホームページ：ホームページを表示
+def home(request):
+    # news.json のパス
+    json_path = os.path.join(settings.BASE_DIR, "news.json")
+
+    # JSONファイルを読み込む
+    try:
+        with open(json_path, "r", encoding="utf-8") as file:
+            news_list = json.load(file)
+            latest_news = news_list[0] if news_list else None  # 最新のお知らせを取得
+    except Exception as e:
+        latest_news = None  # 読み込みエラー時は None
+    return render(request, 'helloApp/home.html' , {"latest_news": latest_news})  # home.htmlを表示
+
+# リクエストページ：リクエストページを表示
+def request(request):
+    return render(request, 'helloApp/request.html')  # request.htmlを表示
+
+def player_detail(request, slug):
+    player = get_object_or_404(Player, slug=slug)  # ✅ スラッグでデータ取得
+    return render(request, "helloApp/player_detail.html", {"player": player})
+
+# プレイヤーページ：リスト作成バージョン（v2）
+def player(request):
+    players = Player.objects.all().order_by("id")
+    # フィルター処理
+    category = request.GET.get("category")
+    team = request.GET.get("team")
+
+    if category:
+        players = [player for player in players if player.category == category]
+
+    if team:
+        players = [player for player in players if player.team == team]
+
+    # ページネーション（1ページ10件）
+    paginator = Paginator(players, 10)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'helloApp/player.html', {'page_obj': page_obj, "category": category, "team": team})
+
+
+
+# お問い合わせページ：お問い合わせページを表示
+def direct(request):
+    return render(request, 'helloApp/direct.html')  # direct.htmlを表示
+
+# ✅ プレイヤー詳細（スラッグ経由）
+def player_detail(request, slug):
+    player = get_object_or_404(Player, slug=slug)  # 🔹 スラッグでデータ取得
+    return render(request, "helloApp/player_detail.html", {"player": player})
+
+
+# ✅ 名前でアクセスしてきた場合にスラッグにリダイレクトするビュー
+class PlayerRedirectView(View):
+    def get(self, request, name):
+        # 🔹 名前から該当するスラッグを取得
+        player = get_object_or_404(Player, name=name)
+        return redirect('player_detail', slug=player.slug, permanent=True)  # 🔹 301リダイレクト
+    
+# ポリシー設定ページ：ポリシー設定ページを表示
+def policy_1(request):
+    return render(request, 'helloApp/policy_1.html')  
+
+# ポリシー設定ページ：ポリシー設定ページを表示
+def policy_2(request):
+    return render(request, 'helloApp/policy_2.html')  
+
+def question(request):
+    return render(request, 'helloApp/question.html')  # question.htmlを表示
+
+
+
+
+def robots_txt(request):
+    content = """User-agent: *
+Allow: /
+
+Sitemap: https://baseball-love-helper-museum.onrender.com/sitemap.xml"""
+    return HttpResponse(content, content_type="text/plain")
+
+
+◆URL設定（urls.py）
+どのページがあるかを確認
+
+ーC:\Users\s_k_t\Django\myDJ\myDJ\urls.py
+from django.contrib import admin
+from django.urls import path , include
+from django.shortcuts import render
+from django.conf import settings
+from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from helloApp.sitemaps import sitemaps
+
+def home(request):
+    return render(request, 'helloApp/home.html')
+
+urlpatterns = [
+    path('', home, name='home'),  # トップページの設定
+    path('admin/', admin.site.urls),
+    path('hello/', include('helloApp.urls')),
+
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),  
+]
+
+# 画像ファイルのURLパターンを追加
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    
+ーC:\Users\s_k_t\Django\myDJ\helloApp\urls.py
+from django.urls import path
+from . import views
+from .views import player_detail , PlayerRedirectView
+# from django.contrib.sitemaps.views import sitemap
+# from .sitemaps import sitemaps
+# from .views import robots_txt  # robots.txt のビューを追加
+
+
+
+urlpatterns = [
+    path('news/', views.news, name='news'), # ニュースページ
+    path('',views.home , name='home'),  # ホームページ
+    path('request/',views.request , name='request'),  # リクエストページ
+    path('player/',views.player , name='player'),  # プレイヤーページ
+    path('direct/',views.direct , name='direct'),  # お問い合わせページ
+    path("player/<slug:slug>/", player_detail, name="player_detail"),  # ✅ スラッグをURLに含める
+    path("player/<str:name>/", PlayerRedirectView.as_view(), name="player_redirect"), 
+    path("policy_1/", views.policy_1, name="policy_1"),  # ポリシー設定ページ  
+    path("policy_2/", views.policy_2, name="policy_2"),  # ポリシー設定ページ
+    path("question/", views.question, name="question"),  # 問い合わせページ
+]
+
+
+◆モデル（models.py）
+データの構造（どの情報を持っているか）
+C:\Users\s_k_t\Django\myDJ\helloApp\models.py
+from django.db import models
+from django.utils.text import slugify
+import os
+
+def player_image_path(instance, filename):
+    """ プレイヤーごとの画像ファイル名を指定 """
+    ext = filename.split('.')[-1]  # 拡張子を取得
+    filename = f"{instance.slug}.{ext}"  # 例: ichiro.png
+    return os.path.join('images/', filename)
+
+class Player(models.Model):
+    category_CHOICES = [
+        ('選手', '選手'),
+        ('その他', 'その他'),
+    ]
+
+    team_CHOICES = [
+        ('読売ジャイアンツ', '読売ジャイアンツ'),
+        ('阪神タイガース', '阪神タイガース'),
+        ('中日ドラゴンズ', '中日ドラゴンズ'),
+        ('横浜DeNAベイスターズ', '横浜DeNAベイスターズ'),
+        ('広島東洋カープ', '広島東洋カープ'),
+        ('東京ヤクルトスワローズ', '東京ヤクルトスワローズ'),
+        ('オリックス・バファローズ', 'オリックス・バファローズ'),
+        ('福岡ソフトバンクホークス', '福岡ソフトバンクホークス'),
+        ('北海道日本ハムファイターズ', '北海道日本ハムファイターズ'),
+        ('千葉ロッテマリーンズ', '千葉ロッテマリーンズ'),
+        ('埼玉西武ライオンズ', '埼玉西武ライオンズ'),
+        ('東北楽天ゴールデンイーグルス', '東北楽天ゴールデンイーグルス'),
+        ('大阪近鉄バファローズ', '大阪近鉄バファローズ'),
+        ('その他', 'その他'),
+    ]
+
+    P_AND_H_CHOICES = [
+        ('右投右打', '右投右打'),
+        ('右投左打', '右投左打'),
+        ('左投左打', '左投左打'),
+        ('左投右打', '左投右打'),
+        ('右投両打', '右投両打'),
+        ('左投両打', '左投両打'),
+    ]
+
+    POSITION_CHOICES = [
+        ('投手', '投手'),
+        ('捕手', '捕手'),
+        ('一塁手', '一塁手'),
+        ('二塁手', '二塁手'),
+        ('三塁手', '三塁手'),
+        ('遊撃手', '遊撃手'),
+        ('外野手', '外野手'),
+        ('指名打者', '指名打者'),
+    ]
+
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100)  # 名前
+    slug = models.SlugField(max_length=100, unique=True, blank=True, null=True)  # スラッグ
+    year = models.IntegerField()  # 年数
+    category = models.CharField(max_length=10, choices=category_CHOICES)  # カテゴリ
+    team = models.CharField(max_length=100, choices=team_CHOICES)  # チーム
+    profile = models.TextField()  # プロフィール
+
+    # 追加フィールド（エラー防止のためデフォルト値を設定）
+    date = models.DateField(null=True, blank=True)  # 生年月日（空欄OK）
+    place = models.CharField(max_length=100, default="不明")  # 出身地
+    school = models.CharField(max_length=100, default="不明")  # 出身校
+    p_and_h = models.CharField(max_length=10, choices=P_AND_H_CHOICES, default="その他")  # 投打（選択式）
+    position = models.CharField(max_length=10, choices=POSITION_CHOICES, default="その他")  # ポジション（選択式）
+    total_record = models.TextField(default="記録なし")  # 通算成績
+    link = models.URLField(max_length=300, blank=True, null=True)  # 外部リンク
+    title = models.TextField(default="受賞タイトルなし")  # タイトル（テキスト）
+    award = models.TextField(default="受賞歴なし")  # 表彰（テキスト）
+    long_profile = models.TextField(default="プロフィールなし")  # プロフィール（テキスト）
+    team_history = models.TextField(default="所属チームなし")  # 所属チーム（テキスト）
+    # **プロフィール画像**
+    profile_image = models.ImageField(upload_to=player_image_path, blank=True, null=True)  # 画像の保存先
+    
+
+    def save(self, *args, **kwargs):
+        if not self.slug or self.slug == "":  # ここで空のスラッグもチェック
+            self.slug = slugify(self.name)  #  自動でスラッグを生成
+        super().save(*args, **kwargs)
+    
+    def __str__(self):
+        return  f"{self.name} ({self.year})"
+
+class Item(models.Model):
+    name = models.CharField(max_length=100)  # 商品名
+    price = models.IntegerField()  # 価格
+    description = models.TextField()  # 説明
+
+    def __str__(self):
+        return self.name
+
+
+◆スタティックファイル（CSS, JavaScript）
+デザイン・スクリプトの改善も可能
+C:\Users\s_k_t\Django\myDJ\static\css\base_style.css
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* ======= ヘッダー全体のスタイル ======= */
+header {
+    z-index: 1000;  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; 
+    background-color: white;
+    border-bottom: 3px solid #c5a46d;
+    height:auto; 
+}
+
+
+
+/* ロゴのサイズ調整 */
+.logo img {
+    height:70px; /* 90px; */
+    /* display: block; */
+}
+
+/* 🔹 メニュー（PC用） */
+.nav-menu {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🔹 メニューアイテム */
+.nav-menu ul li {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #c5a46d;
+}
+
+/* 🔹 ハンバーガーメニュー（スマホ用） */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* ======= ナビゲーションメニュー ======= */
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+.main_title{
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+/* ヘッダーのナビゲーション */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* ナビゲーションを中央揃え */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* ナビゲーションメニューのスタイル */
+nav ul li {
+    padding: 5px 10px; /* 余白を調整 */
+    /* position: relative; */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 区切り線を設定 */
+nav ul li:not(:first-child)::before {
+    content: "|";  /* 区切り線を追加 */
+    color: #999;  /* 線の色（薄めにする） */
+    margin-right: 10px; /* 余白を設定 */
+    font-weight: normal; /* 線を細くする */
+}
+
+/* メニューのリンクのスタイル */
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* 文字色を設定 */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #c5a46d; /* ホバー時に青色に変更 */
+}
+/* ======= アクティブなメニューの下線 ======= */
+nav ul li.active a {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul li.active a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    bottom: -5px;
+    left: 0;
+}
+
+
+/* 🔹 スマホ用のメニュー */
+@media screen and (max-width: 768px) {
+    .nav-menu ul {
+        display: none; /* 最初は隠す */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        border-top: 3px solid #c5a46d;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* スマホで表示 */
+    }
+}
+
+/* フッター（ページ下部に固定） */
+footer {
+    background-color: #2C5D49;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* フッターをページの下部に配置 */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+C:\Users\s_k_t\Django\myDJ\static\css\home_style.css
+/* 重要なお知らせ */
+.news-alert {
+    background-color: #C3181F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* スライドショー */
+.slideshow {
+    position: relative;
+    /* width: 100vw; */
+    width: 90%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto; /* ✅ 中央揃え */
+    /* width: 100%;
+    max-height: 500px;  */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;  */
+}
+
+.slide {
+    display: none; /* 最初はすべて非表示 */
+    /* position: relative; */
+    height: 100%;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /*auto*/
+    object-fit: cover;
+}
+
+/* スライド説明文 */
+.slide-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 半透明の黒背景 */
+    color: white; /* 文字は白 */
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* タイトル（h2）のデザイン */
+.slide-caption h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* 説明テキスト（p）のデザイン */
+.slide-caption p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+
+/* フェードアニメーション */
+.fade {
+    animation: fadeEffect 1.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3); /* 透明感のあるボタン */
+    color: #fff;
+    font-size: 24px;
+    padding: 15px;
+    border: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ページング（ドット） */
+.dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+    .slideshow {
+        max-height: 300px;
+        width: 100vw;
+    }
+    
+    .prev, .next {
+        font-size: 20px;
+        padding: 5px;
+    }
+}
+
+.pick_up_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2C5D49;
+    padding: 20px;
+    border-radius: 50px 0 0 50px;
+    max-width: 700px;
+    position: relative;
+    margin: 30px auto;
+    overflow: hidden; 
+}
+
+.pick_up_banner {
+    padding: 20px;
+    color: white;
+}
+
+.pick_up_text {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Georgia", serif;
+}
+
+.pick_up_subtext {
+    font-size: 18px;
+    margin: 5px 0 0 0;
+    font-family: "Arial", sans-serif;
+}
+
+.pick_up_image img {
+    width: 150px; /* 画像のサイズを調整 */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;  /* ← 画像が親要素からはみ出ないように */
+    height: auto;
+    object-fit: contain;  /* ← 画像が縮小されても比率が崩れないように */
+
+}
+
+
+
+/* カード全体のレイアウト */
+.event-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+}
+
+.event-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 各カードのスタイル */
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 画像サイズの統一 */
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* カード内のテキスト */
+.event-content {
+    padding: 15px;
+}
+
+.event-content h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* カテゴリラベル */
+.event-label {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+}
+
+/* カテゴリごとの色 */
+.event { background-color: #f4a400; } /* イベント */
+.exhibit { background-color: #d40000; } /* 展示 */
+.hall { background-color: #795548; } /* 殿堂 */
+.none { background-color: #757575; } /* その他 */
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .event-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .event-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ページ全体の横スクロール防止 */
+body {
+    overflow-x: hidden; /* 横スクロールを防止 */
+    margin: 0;
+    padding: 0;
+}
+C:\Users\s_k_t\Django\myDJ\static\css\p_style.css
+/* ページ全体の横スクロール防止 */
+body {
+    overflow-x: hidden; /* 横スクロールを防止 */
+    margin: 0;
+    padding: 0;
+}
+/* 🎖️ ヘッダー（グラデーション背景） */
+.header {
+    width: 100%;
+    max-width: 100%; /* ページ幅いっぱいにする */
+    height: 100px;
+    background: linear-gradient(135deg, #f1e3c0, #d4af37, #b8860b); /* ベージュ + ゴールド */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+    border-bottom: 4px solid #b8860b;
+    box-sizing: border-box; /* 要素の横幅計算を正しくする */
+}
+/* ヘッダーのタイトル */
+.header h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 🎯 テーブルデザイン */
+.table-container {
+    margin: 30px auto;
+    width: 90%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* 4. スマホ版のテーブル表示修正 */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+/* テーブルのヘッダー */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* 4. スマホ版のテーブル表示修正 */
+    min-width: 800px;
+    word-break: keep-all;
+}
+th {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #b8860b; /* 下に2pxのボーダー（ゴールド系）を追加 */
+}
+/* テーブルのセル */
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+/* 交互の背景色 */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:nth-child(odd) {
+    background-color: white;
+}
+/* 行ホバー時 */
+tr:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+
+/* ------------ID:1(検索フォームとフィルターの配置)------------- */
+.search-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 2vh;
+    flex-wrap: wrap;
+
+}
+
+/* 🔹 検索ボックス */
+.search-box {
+    width: 60%;
+    padding: 12px;
+    border: 2px solid #d4af37;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 検索ボックス フォーカス時の強調 */？？？
+.search-box:focus {
+    border-color: #b8860b;
+    outline: none;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* 🔹 フィルターボタン */
+.filter-btn {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn i {
+    font-size: 18px;
+}
+
+/* 🔹 フィルターボタン ホバー時 */
+.filter-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #b8860b, #d4af37);
+}
+
+/* ------------ID:2(フィルターメニューのデザイン)------------- */
+.filter-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    transform: translateX(100%);
+}
+
+.filter-menu.show {
+    transform: translateX(0);
+}
+
+/* 🔹 フィルターのタイトル */
+.filter-content h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* 🔹 フィルター内のリンクリスト */
+.filter-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* 🔹 フィルターのリスト */
+.filter-content li {
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 🔹 フィルター内のリンク */
+.filter-content li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* 🔹 ホバー時 */
+.filter-content li a:hover {
+    background: #f1f1f1;
+}
+
+/* 🔹 閉じるボタン */
+.close-btn {
+    background: #c00;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 18px;
+}
+
+/* 🔹 スマホ対応 */
+@media (max-width: 768px) {
+    .search-filter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box {
+        width: 80%;
+    }
+
+    .filter-btn {
+        width: 80%;
+    }
+
+    .filter-menu {
+        width: 100%;
+    }
+
+    table {
+        overflow-x: auto; /* 横スクロールを許可（画面が狭い時に崩れないように） */
+        white-space: nowrap; /* セルの中のテキストを折り返さない */
+    }
+
+    th, td {
+        font-size: 14px; /* スマホではフォントサイズを少し小さくする（16px → 14px） */
+        padding: 10px; /* スマホではセル内の余白を少し減らす（12px → 10px） */
+    }
+}
+
+C:\Users\s_k_t\Django\myDJ\static\js\p_script.js
+document.addEventListener("DOMContentLoaded", function() {
+    let searchInput = document.getElementById("searchInput");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("keyup", function() {
+        let filter = searchInput.value.toLowerCase();
+        let rows = document.querySelectorAll("tbody tr");
+
+        rows.forEach(row => {
+            let name = row.cells[1].textContent.toLowerCase();
+            row.style.display = name.includes(filter) ? "" : "none";
+        });
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    let filterToggle = document.getElementById("filterToggle");
+    let filterMenu = document.getElementById("filterMenu");
+    let closeFilter = document.getElementById("closeFilter");
+
+    // 🔹 フィルター開閉処理
+    filterToggle.addEventListener("click", function () {
+        filterMenu.classList.toggle("show");
+    });
+
+    closeFilter.addEventListener("click", function () {
+        filterMenu.classList.remove("show");
+    });
+
+    // 🔹 フィルター外クリックで閉じる
+    document.addEventListener("click", function (event) {
+        if (!filterMenu.contains(event.target) && !filterToggle.contains(event.target)) {
+            filterMenu.classList.remove("show");
+        }
+    });
+});
+
+
+C:\Users\s_k_t\Django\myDJ\static\js\slideshow.js
+let slideIndex = 0;
+let slides, dots;
+
+document.addEventListener("DOMContentLoaded", function () {
+    slides = document.getElementsByClassName("slide");
+    dots = document.getElementsByClassName("dot");
+
+    showSlides(slideIndex);
+
+    // 3秒ごとに自動スライド
+    setInterval(nextSlide, 5000);
+});
+
+// スライドの表示を更新する関数
+function showSlides(n) {
+    if (!slides || slides.length === 0) return;
+
+    if (n >= slides.length) {
+        slideIndex = 0;
+    } else if (n < 0) {
+        slideIndex = slides.length - 1;
+    } else {
+        slideIndex = n;
+    }
+
+    // すべてのスライドを非表示にする
+    for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+
+    // すべてのドットのアクティブを解除
+    if (dots) {
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].classList.remove("active");
+        }
+    }
+
+    // 現在のスライドとドットを表示
+    slides[slideIndex].style.display = "block";
+    if (dots && dots[slideIndex]) {
+        dots[slideIndex].classList.add("active");
+    }
+}
+
+// 次のスライドに移動
+function nextSlide() {
+    showSlides(slideIndex + 1);
+}
+
+// 前のスライドに移動
+function prevSlide() {
+    showSlides(slideIndex - 1);
+}
+
+// ドットをクリックしたときのスライド変更
+function setSlide(n) {
+    showSlides(n);
+}
+
+
+
+
+
+
+
+
