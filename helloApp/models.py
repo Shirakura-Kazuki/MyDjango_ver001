@@ -54,6 +54,10 @@ class Player(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100)  # 名前
     slug = models.SlugField(max_length=100, unique=True, blank=True, null=True)  # スラッグ
+
+    updated_at = models.DateTimeField(auto_now=True)  # 最終更新日を追加
+    is_featured = models.BooleanField(default=False)  # 重要な選手かどうか
+    
     year = models.IntegerField()  # 年数
     category = models.CharField(max_length=10, choices=category_CHOICES)  # カテゴリ
     team = models.CharField(max_length=100, choices=team_CHOICES)  # チーム
