@@ -6,6 +6,19 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from helloApp.sitemaps import sitemaps
 
+from django.http import HttpResponse
+import os
+
+def ads_txt(request):
+    """ads.txt を提供するビュー"""
+    ads_path = os.path.join(os.path.dirname(__file__), "static", "ads.txt")
+    try:
+        with open(ads_path, "r") as f:
+            content = f.read()
+        return HttpResponse(content, content_type="text/plain")
+    except FileNotFoundError:
+        return HttpResponse("ads.txt not found", status=404)
+
 def home(request):
     return render(request, 'helloApp/home.html')
 
@@ -13,8 +26,9 @@ urlpatterns = [
     path('', home, name='home'),  # トップページの設定
     path('admin/', admin.site.urls),
     path('hello/', include('helloApp.urls')),
-
     path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),  
+
+    path("ads.txt", ads_txt),  # 追加
 ]
 
 # 画像ファイルのURLパターンを追加
