@@ -5,20 +5,22 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from helloApp.sitemaps import sitemaps
-
 from django.http import HttpResponse
 import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 def ads_txt(request):
     """ads.txt を提供するビュー"""
-    ads_path = os.path.join(os.path.dirname(__file__), "static", "ads.txt")
-    try:
+    ads_path = os.path.join(BASE_DIR, "static", "ads.txt")  # 正しいパス
+    if os.path.exists(ads_path):
         with open(ads_path, "r") as f:
             content = f.read()
         return HttpResponse(content, content_type="text/plain")
-    except FileNotFoundError:
+    else:
         return HttpResponse("ads.txt not found", status=404)
-
+    
+    
 def home(request):
     return render(request, 'helloApp/home.html')
 
