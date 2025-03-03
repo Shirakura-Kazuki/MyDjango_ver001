@@ -1,0 +1,223 @@
+/* ページ全体の横スクロール防止 */
+body {
+    overflow-x: hidden; /* 横スクロールを防止 */
+    margin: 0;
+    padding: 0;
+}
+/* 🎖️ ヘッダー（グラデーション背景） */
+.header {
+    width: 100%;
+    max-width: 100%; /* ページ幅いっぱいにする */
+    height: 100px;
+    background: linear-gradient(135deg, #f1e3c0, #d4af37, #b8860b); /* ベージュ + ゴールド */
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 50px;
+    border-bottom: 4px solid #b8860b;
+    box-sizing: border-box; /* 要素の横幅計算を正しくする */
+}
+/* ヘッダーのタイトル */
+.header h1 {
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* 🎯 テーブルデザイン */
+.table-container {
+    margin: 30px auto;
+    width: 90%;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    /* 4. スマホ版のテーブル表示修正 */
+    overflow-x: auto;
+    white-space: nowrap;
+}
+/* テーブルのヘッダー */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    /* 4. スマホ版のテーブル表示修正 */
+    min-width: 800px;
+    word-break: keep-all;
+}
+th {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #b8860b; /* 下に2pxのボーダー（ゴールド系）を追加 */
+}
+/* テーブルのセル */
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+/* 交互の背景色 */
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+tr:nth-child(odd) {
+    background-color: white;
+}
+/* 行ホバー時 */
+tr:hover {
+    background: rgba(255, 215, 0, 0.2);
+    transition: 0.3s ease-in-out;
+}
+
+
+/* ------------ID:1(検索フォームとフィルターの配置)------------- */
+.search-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-top: 2vh;
+    flex-wrap: wrap;
+
+}
+
+/* 🔹 検索ボックス */
+.search-box {
+    width: 60%;
+    padding: 12px;
+    border: 2px solid #d4af37;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+/* 🔹 検索ボックス フォーカス時の強調 */？？？
+.search-box:focus {
+    border-color: #b8860b;
+    outline: none;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+}
+
+/* 🔹 フィルターボタン */
+.filter-btn {
+    background: linear-gradient(135deg, #d4af37, #b8860b);
+    color: white;
+    padding: 12px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); */
+    border: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.filter-btn i {
+    font-size: 18px;
+}
+
+/* 🔹 フィルターボタン ホバー時 */
+.filter-btn:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #b8860b, #d4af37);
+}
+
+/* ------------ID:2(フィルターメニューのデザイン)------------- */
+.filter-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    padding: 20px;
+    transform: translateX(100%);
+}
+
+.filter-menu.show {
+    transform: translateX(0);
+}
+
+/* 🔹 フィルターのタイトル */
+.filter-content h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+/* 🔹 フィルター内のリンクリスト */
+.filter-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* 🔹 フィルターのリスト */
+.filter-content li {
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* 🔹 フィルター内のリンク */
+.filter-content li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+}
+
+/* 🔹 ホバー時 */
+.filter-content li a:hover {
+    background: #f1f1f1;
+}
+
+/* 🔹 閉じるボタン */
+.close-btn {
+    background: #c00;
+    color: white;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    float: right;
+    font-size: 18px;
+}
+
+/* 🔹 スマホ対応 */
+@media (max-width: 768px) {
+    .search-filter-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .search-box {
+        width: 80%;
+    }
+
+    .filter-btn {
+        width: 80%;
+    }
+
+    .filter-menu {
+        width: 100%;
+    }
+
+    table {
+        overflow-x: auto; /* 横スクロールを許可（画面が狭い時に崩れないように） */
+        white-space: nowrap; /* セルの中のテキストを折り返さない */
+    }
+
+    th, td {
+        font-size: 14px; /* スマホではフォントサイズを少し小さくする（16px → 14px） */
+        padding: 10px; /* スマホではセル内の余白を少し減らす（12px → 10px） */
+    }
+}

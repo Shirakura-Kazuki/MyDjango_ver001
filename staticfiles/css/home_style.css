@@ -1,0 +1,292 @@
+/* 重要なお知らせ */
+.news-alert {
+    background-color: #C3181F;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+}
+
+/* スライドショー */
+.slideshow {
+    position: relative;
+    /* width: 100vw; */
+    width: 90%;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0 auto; /* ✅ 中央揃え */
+    /* width: 100%;
+    max-height: 500px;  */
+    /* display: flex;
+    align-items: center;
+    justify-content: center;  */
+}
+
+.slide {
+    display: none; /* 最初はすべて非表示 */
+    /* position: relative; */
+    height: 100%;
+    text-align: center;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%; /*auto*/
+    object-fit: cover;
+}
+
+/* スライド説明文 */
+.slide-caption {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6); /* 半透明の黒背景 */
+    color: white; /* 文字は白 */
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* タイトル（h2）のデザイン */
+.slide-caption h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* 説明テキスト（p）のデザイン */
+.slide-caption p {
+    margin: 5px 0 0;
+    font-size: 16px;
+}
+
+
+/* フェードアニメーション */
+.fade {
+    animation: fadeEffect 1.5s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from { opacity: 0.4; }
+    to { opacity: 1; }
+}
+
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3); /* 透明感のあるボタン */
+    color: #fff;
+    font-size: 24px;
+    padding: 15px;
+    border: none;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+/* ページング（ドット） */
+.dots-container {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: #717171;
+}
+
+/* レスポンシブ対応 */
+@media screen and (max-width: 768px) {
+    .slideshow {
+        max-height: 300px;
+        width: 100vw;
+    }
+    
+    .prev, .next {
+        font-size: 20px;
+        padding: 5px;
+    }
+}
+
+.pick_up_section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2C5D49;
+    padding: 20px;
+    border-radius: 50px 0 0 50px;
+    max-width: 700px;
+    position: relative;
+    margin: 30px auto;
+    overflow: hidden; 
+}
+
+.pick_up_banner {
+    padding: 20px;
+    color: white;
+}
+
+.pick_up_text {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+    font-family: "Georgia", serif;
+}
+
+.pick_up_subtext {
+    font-size: 18px;
+    margin: 5px 0 0 0;
+    font-family: "Arial", sans-serif;
+}
+
+.pick_up_image img {
+    width: 150px; /* 画像のサイズを調整 */
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;  /* ← 画像が親要素からはみ出ないように */
+    height: auto;
+    object-fit: contain;  /* ← 画像が縮小されても比率が崩れないように */
+
+}
+
+
+
+/* カード全体のレイアウト */
+.event-section {
+    padding: 40px;
+    background-color: #f9f9f9;
+}
+
+.event-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* 各カードのスタイル */
+.event-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 画像サイズの統一 */
+.event-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* カード内のテキスト */
+.event-content {
+    padding: 15px;
+}
+
+.event-content h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* カテゴリラベル */
+.event-label {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+}
+
+/* カテゴリごとの色 */
+.event { background-color: #f4a400; } /* イベント */
+.exhibit { background-color: #d40000; } /* 展示 */
+.hall { background-color: #795548; } /* 殿堂 */
+.none { background-color: #757575; } /* その他 */
+
+/* レスポンシブ */
+@media (max-width: 768px) {
+    .event-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .event-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ページ全体の横スクロール防止 */
+body {
+    overflow-x: hidden; /* 横スクロールを防止 */
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    font-size: 100%;
+    margin: 20px 0;
+}
+.home-txt{
+    text-align: center;
+    font-size: 100%;
+    margin: 20px 0;
+}
+
+.heading06 {
+	position: relative;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 26px;
+	text-align: center;
+}
+
+.heading06 span {
+	position: relative;
+	z-index: 2;
+}
+
+.heading06::before {
+	content: attr(data-en);
+	position: absolute;
+	top: -20px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: rgba(224,66,114,0.2);
+	font-size: 80px;
+	font-style: italic;
+}

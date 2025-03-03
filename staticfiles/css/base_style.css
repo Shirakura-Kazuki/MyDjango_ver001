@@ -1,0 +1,184 @@
+/* 全体のスタイル */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+/* ======= ヘッダー全体のスタイル ======= */
+header {
+    z-index: 1000;  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 10px; 
+    background-color: white;
+    border-bottom: 3px solid #c5a46d;
+    height:auto; 
+}
+
+
+
+/* ロゴのサイズ調整 */
+.logo img {
+    height:70px; /* 90px; */
+    /* display: block; */
+}
+
+/* 🔹 メニュー（PC用） */
+.nav-menu {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.nav-menu ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* 🔹 メニューアイテム */
+.nav-menu ul li {
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #c5a46d;
+}
+
+/* 🔹 ハンバーガーメニュー（スマホ用） */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* ======= ナビゲーションメニュー ======= */
+nav {
+    flex-grow: 1;
+    text-align: center;
+}
+.main_title{
+    font-size: 24px;
+    font-weight: bold;
+    
+}
+/* ヘッダーのナビゲーション */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center; /* ナビゲーションを中央揃え */
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+/* ナビゲーションメニューのスタイル */
+nav ul li {
+    padding: 5px 10px; /* 余白を調整 */
+    /* position: relative; */
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* 区切り線を設定 */
+nav ul li:not(:first-child)::before {
+    content: "|";  /* 区切り線を追加 */
+    color: #999;  /* 線の色（薄めにする） */
+    margin-right: 10px; /* 余白を設定 */
+    font-weight: normal; /* 線を細くする */
+}
+
+/* メニューのリンクのスタイル */
+nav ul li a {
+    text-decoration: none;
+    color: #333; /* 文字色を設定 */
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #c5a46d; /* ホバー時に青色に変更 */
+}
+/* ======= アクティブなメニューの下線 ======= */
+nav ul li.active a {
+    display: inline-block;
+    position: relative;
+}
+
+nav ul li.active a::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    bottom: -5px;
+    left: 0;
+}
+
+
+/* 🔹 スマホ用のメニュー */
+@media screen and (max-width: 768px) {
+    .nav-menu ul {
+        display: none; /* 最初は隠す */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: white;
+        border-top: 3px solid #c5a46d;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-menu ul.show {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block; /* スマホで表示 */
+    }
+}
+
+/* フッター（ページ下部に固定） */
+footer {
+    background-color: #2C5D49;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto; /* フッターをページの下部に配置 */
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+footer ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+footer ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+
